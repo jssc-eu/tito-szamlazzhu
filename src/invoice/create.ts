@@ -3,6 +3,7 @@ import szamlazz from '@jssc/szamlazz.js';
 import getBuyer from './get-buyer';
 import getSeller from './get-seller';
 import getItems from './get-items';
+import getPaymentMethod from './get-payment-method';
 
 export default async (
   order: any,
@@ -27,7 +28,7 @@ export default async (
   const comment = config.invoice.comment;
 
   return new Invoice({
-    paymentMethod: szamlazz.PaymentMethod.PayPal,
+    paymentMethod: getPaymentMethod(order),
     currency: szamlazz.Currency[currency],
     language: szamlazz.Language.English,
     invoiceIdPrefix,
