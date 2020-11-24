@@ -14,6 +14,7 @@ export interface Buyer {
   zip: string;
   city: string;
   taxNumber?: string;
+  taxSubject: number;
   address: string;
   postAddress: PostAddress;
   identifier: number;

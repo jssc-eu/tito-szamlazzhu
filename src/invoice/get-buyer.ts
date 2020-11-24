@@ -1,4 +1,6 @@
-import { Buyer } from '../szamlazzhu/types'
+import getTaxSubject from './get-tax-subject';
+import getTaxNumber from './get-tax-number';
+import { Buyer } from '../szamlazzhu/types';
 
 export default (order) : Buyer => {
   const {
@@ -10,7 +12,6 @@ export default (order) : Buyer => {
       city,
       zip_postal_code: zip = '',
       country_name: country,
-      vat_number,
       state_province_region: state = '',
     },
   } = order;
@@ -23,7 +24,8 @@ export default (order) : Buyer => {
     email,
     sendEmail: true,
     country,
-    taxNumber: '',
+    taxNumber: getTaxNumber(order),
+    taxSubject: getTaxSubject(order),
     zip,
     city,
     address: addressWithState,
@@ -38,9 +40,6 @@ export default (order) : Buyer => {
     issuerName: name,
   };
 
-  if (vat_number !== '0' ) {
-    data.taxNumber = vat_number
-  }
 
-  return data
+  return data;
 };

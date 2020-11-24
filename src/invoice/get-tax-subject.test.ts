@@ -1,10 +1,6 @@
-import { promisify } from 'util';
-import fs from 'fs';
-import yaml from 'yaml';
-import getBuyer from './get-buyer';
+import getTaxSubject from './get-tax-subject';
 
-const readFile = promisify(fs.readFile);
-const order = {
+const orderData = {
   id: 6050550,
   text: 'Test Usaer registered a ticket',
   event: {
@@ -121,19 +117,56 @@ const order = {
 };
 
 
-describe('get buyer', () => {
-  test('buyer with vat number', async () => {
-      const buyer = getBuyer(order);
-      expect(buyer.taxNumber).toBe('234536');
+describe('get tax subject', () => {
+  test('not a tax subject', async () => {
+      const order = JSON.parse(JSON.stringify(orderData));
+
+      order.billing_address.company_name = '';
+      order.billing_address.vat_number = '0';
+      order.billing_address.country = 'HU';
+
+      const taxSubject = getTaxSubject(order);
+      expect(taxSubject.value).toBe(-1);
   });
 
-  test('buyer without vat number', async () => {
-    const order2 = { ...order };
-    order2.billing_address = { ...order.billing_address };
+  test('eu vat subject', async () => {
+    const order = JSON.parse(JSON.stringify(orderData));
 
-    order2.billing_address.vat_number = '0';
+    order.billing_address.company_name = 'EU Company';
+    order.billing_address.country = 'EE';
+    order.billing_address.vat_number = '12312412';
 
-    const buyer = getBuyer(order2);
-    expect(buyer.taxNumber).toBe('');
-});
+    const taxSubject = getTaxSubject(order);
+    expect(taxSubject.value).toBe(6);
+  });
+
+  test('hungarian vat subject', async () => {
+    const order = JSON.parse(JSON.stringify(orderData));
+    order.billing_address.company_name = 'Hungarian Company';
+    order.billing_address.country = 'HU';
+
+    const taxSubject = getTaxSubject(order);
+    expect(taxSubject.value).toBe(1);
+  });
+
+  test('non eu vat subject', async () => {
+    const order = JSON.parse(JSON.stringify(orderData));
+
+    order.billing_address.company_name = 'USA Company';
+    order.billing_address.country = 'US';
+    order.billing_address.vat_number = '123112';
+
+    const taxSubject = getTaxSubject(order);
+    expect(taxSubject.value).toBe(7);
+  });
+
+  test('unknown vat subject status', async () => {
+    const order = JSON.parse(JSON.stringify(orderData));
+    order.billing_address.company_name = '';
+    order.billing_address.country = 'EE';
+    order.billing_address.vat_number = '12312412';
+
+    const taxSubject = getTaxSubject(order);
+    expect(taxSubject.value).toBe(0);
+  });
 });

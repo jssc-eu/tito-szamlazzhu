@@ -1,10 +1,6 @@
-import { promisify } from 'util';
-import fs from 'fs';
-import yaml from 'yaml';
-import getBuyer from './get-buyer';
+import getTaxNumber from './get-tax-number';
 
-const readFile = promisify(fs.readFile);
-const order = {
+const orderData = {
   id: 6050550,
   text: 'Test Usaer registered a ticket',
   event: {
@@ -121,19 +117,32 @@ const order = {
 };
 
 
-describe('get buyer', () => {
-  test('buyer with vat number', async () => {
-      const buyer = getBuyer(order);
-      expect(buyer.taxNumber).toBe('234536');
+describe('get tax number', () => {
+  test('no tax id', async () => {
+      const order = JSON.parse(JSON.stringify(orderData));
+
+      order.billing_address.vat_number = null;
+      delete order.billing_address.vat_number;
+
+      const taxNumber = getTaxNumber(order);
+      expect(taxNumber).toBe('');
   });
 
-  test('buyer without vat number', async () => {
-    const order2 = { ...order };
-    order2.billing_address = { ...order.billing_address };
+  test('zero tax id', async () => {
+    const order = JSON.parse(JSON.stringify(orderData));
 
-    order2.billing_address.vat_number = '0';
+    order.billing_address.vat_number = '0';
 
-    const buyer = getBuyer(order2);
-    expect(buyer.taxNumber).toBe('');
-});
+    const taxNumber = getTaxNumber(order);
+    expect(taxNumber).toBe('');
+  });
+
+  test('provided tax id', async () => {
+    const order = JSON.parse(JSON.stringify(orderData));
+
+    order.billing_address.vat_number = 'HU21343647';
+
+    const taxNumber = getTaxNumber(order);
+    expect(taxNumber).toBe('HU21343647');
+  });
 });

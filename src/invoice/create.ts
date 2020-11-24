@@ -1,3 +1,4 @@
+import yaml from 'yaml';
 import szamlazz from '@jssc/szamlazz.js';
 import getBuyer from './get-buyer';
 import getSeller from './get-seller';
@@ -14,6 +15,10 @@ export default async (
   const seller = new Seller(getSeller(config));
   const buyer = new Buyer(getBuyer(order));
   const items = getItems(config, order).map(item => new Item(item));
+
+  if (process.env.DEBUG) {
+    console.log(yaml.stringify(order));
+  }
 
   const currency = config.invoice.currency;
   const orderNumber = order.reference;

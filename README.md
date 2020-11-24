@@ -170,6 +170,46 @@ events:
 
 ```
 
+
+## VAT rules
+
+EU countries
+
+| Country Code      | Country Name    |
+|-------------------|-----------------|
+| BE                | Belgium         |
+| BG                | Bulgaria        |
+| CZ                | Czech Republic  |
+| DK                | Denmark         |
+| DE                | Germany         |
+| EE                | Estonia         |
+| IE                | Ireland         |
+| EL                | Greece          |
+| GR                | Greece          |
+| ES                | Spain           |
+| FR                | France          |
+| HR                | Croatia         |
+| IT                | Italy           |
+| CY                | Cyprus          |
+| LV                | Latvia          |
+| LT                | Lithuania       |
+| LU                | Luxembourg      |
+| HU                | Hungary         |
+| MT                | Malta           |
+| NL                | Netherlands     |
+| AT                | Austria         |
+| PL                | Poland          |
+| PT                | Portugal        |
+| RO                | Romania         |
+| SI                | Slovenia        |
+| SK                | Slovak Republic |
+| FI                | Finland         |
+| SE                | Sweden          |
+| UK                | United Kingdom  |
+
+Source: <https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/vat/how_vat_works/rates/vat_rates_en.pdf>
+
+
 ## License
 
 MIT License
