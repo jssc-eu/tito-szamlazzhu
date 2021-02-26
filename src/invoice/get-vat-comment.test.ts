@@ -20,7 +20,7 @@ const buyerData: Buyer = {
     city: 'City',
     address: 'addressWithState',
   },
-  identifier: 1,
+  identifier: "1",
   phone: '',
   issuerName: 'name',
   isTEHK: false,
