@@ -31,12 +31,11 @@ export default (order, buyer: Buyer, eventConfig) => order.line_items.reduce((it
       unit: 'qt',
       vat: vatRate,
       comment: `Ticket for ${eventConfig.label}, ${date}`,
-    }
+    };
 
     if (vatRate === 'TEHK') {
       item.netUnitPrice = ticketPartial;
       item.grossValue = item.netValue = (ticketPartial * quantity);
-
     } else {
       item.grossUnitPrice = ticketPartial; // calculates gross and net values from per item net
     }
@@ -49,7 +48,7 @@ export default (order, buyer: Buyer, eventConfig) => order.line_items.reduce((it
         quantity,
         unit: 'qt',
         vat: vatRate,
-      }
+      };
 
       if (vatRate === 'TEHK') {
         cateringItem.netUnitPrice = roundTo(cateringPartial * 1.27, 2);

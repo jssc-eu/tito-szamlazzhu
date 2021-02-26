@@ -17,7 +17,7 @@ export interface Buyer {
   taxSubject: number;
   address: string;
   postAddress: PostAddress;
-  identifier: number;
+  identifier: string;
   phone: string;
   issuerName: string;
   isTEHK: boolean;

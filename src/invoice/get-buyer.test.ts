@@ -135,7 +135,7 @@ describe('get buyer', () => {
 });
 
 
-describe('buyer VAT TEHK type',  () => {
+describe('buyer VAT TEHK type', () => {
   test('HU without VAT', async () => {
     const orderData = deepClone(order);
 
