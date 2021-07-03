@@ -1,5 +1,5 @@
 import roundTo from 'round-to';
-import { Buyer, Item } from '../szamlazzhu/types';
+import { Buyer, Item, VatRate } from '../szamlazzhu/types';
 import getCateringPerTicket from './get-catering-per-ticket';
 import getPropertyByTicketType from './get-property-by-ticket-type';
 
@@ -9,18 +9,33 @@ const getDate = (ticket, config) => {
   return getPropertyByTicketType(ticket, 'date', config.dates);
 };
 
+const getVatRate = (buyer, isOnlineService) => {
+  if (isOnlineService && buyer.isTEHK) {
+    return VatRate.TEHK
+  }
+
+  return VatRate.Regular
+}
+
 export default (order, buyer: Buyer, eventConfig) => order.line_items.reduce((items, ticket) => {
     const {
       price,
       quantity,
       release_title: title,
+      release = {}
     } = ticket;
 
     if (price === 0) {
       return items;
     }
 
-    const vatRate = (buyer.isTEHK) ? 'TEHK' : 27;
+    const {
+      metadata: release_metadata = {}
+    } = release;
+
+    const onlineService = release_metadata?.['online-service'] ?? false;
+
+    const vatRate = getVatRate(buyer, onlineService);
     const date = getDate(title, eventConfig);
     const cateringPartial = getCateringPerTicket(title, eventConfig);
     const ticketPartial = roundTo(price - (cateringPartial * 1.27), 2);
@@ -33,7 +48,7 @@ export default (order, buyer: Buyer, eventConfig) => order.line_items.reduce((it
       comment: `Ticket for ${eventConfig.label}, ${date}`,
     };
 
-    if (vatRate === 'TEHK') {
+    if (vatRate === VatRate.TEHK) {
       item.netUnitPrice = ticketPartial;
       item.grossValue = item.netValue = (ticketPartial * quantity);
     } else {
@@ -50,7 +65,7 @@ export default (order, buyer: Buyer, eventConfig) => order.line_items.reduce((it
         vat: vatRate,
       };
 
-      if (vatRate === 'TEHK') {
+      if (vatRate === VatRate.TEHK) {
         cateringItem.netUnitPrice = roundTo(cateringPartial * 1.27, 2);
         cateringItem.grossValue = cateringItem.netValue = (roundTo(cateringPartial * 1.27, 2) * quantity);
       } else {

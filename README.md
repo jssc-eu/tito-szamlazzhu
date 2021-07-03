@@ -1,7 +1,5 @@
 # tisza
 
-[![Build Status](https://travis-ci.org/jssc-eu/tisza.svg?branch=master)](https://travis-ci.org/jssc-eu/tisza)
-
 ti.to - szamlazz.hu integration proxy service
 
 ## What?
@@ -208,6 +206,18 @@ EU countries
 | UK                | United Kingdom  |
 
 Source: <https://ec.europa.eu/taxation_customs/sites/taxation/files/resources/documents/taxation/vat/how_vat_works/rates/vat_rates_en.pdf>
+
+Tickets with tito metadata `"online-service"` will be handled as online services according to tax laws 37. §.
+
+Example tito metadata:
+
+```json
+{
+  "online-service": true
+}
+```
+
+![](tisza-tito-metadata.png)
 
 
 ## License
