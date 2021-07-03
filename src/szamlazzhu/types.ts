@@ -34,3 +34,9 @@ export interface Item {
   grossValue?: number;
   grossUnitPrice?: number;
 }
+
+
+export enum VatRate {
+  TEHK = "TEHK",
+  Regular = 27,
+}

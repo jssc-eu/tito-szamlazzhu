@@ -19,6 +19,7 @@ const token = 'ABCDEFGHIJK'
   });
 
   describe('vat entries', () => {
+
     test('HU company', async () => {
       const order = mockOrder("hu-company", "tickets")
       const config = mockConfig("single", "single")
@@ -71,6 +72,71 @@ const token = 'ABCDEFGHIJK'
 
     test('Non-EU person', async () => {
       const order = mockOrder("non-eu-person", "tickets")
+      const config = mockConfig("single", "single")
+
+      const invoice = await createInvoice(order, config);
+      const client = createClient(config, token)
+      const xml = client._generateInvoiceXML(invoice)
+      expect(xml).toMatchSnapshot();
+    })
+
+  })
+
+
+  describe('vat entries for online services', () => {
+
+    test('HU company', async () => {
+      const order = mockOrder("hu-company", "online-tickets")
+      const config = mockConfig("single", "single")
+
+      const invoice = await createInvoice(order, config);
+      const client = createClient(config, token)
+      const xml = client._generateInvoiceXML(invoice)
+      expect(xml).toMatchSnapshot();
+    })
+
+    test('HU person', async () => {
+      const order = mockOrder("hu-person", "online-tickets")
+      const config = mockConfig("single", "single")
+
+      const invoice = await createInvoice(order, config);
+      const client = createClient(config, token)
+      const xml = client._generateInvoiceXML(invoice)
+      expect(xml).toMatchSnapshot();
+    })
+
+    test('EU company', async () => {
+      const order = mockOrder("eu-company", "online-tickets")
+      const config = mockConfig("single", "single")
+
+      const invoice = await createInvoice(order, config);
+      const client = createClient(config, token)
+      const xml = client._generateInvoiceXML(invoice)
+      expect(xml).toMatchSnapshot();
+    })
+
+    test('EU person', async () => {
+      const order = mockOrder("eu-person", "online-tickets")
+      const config = mockConfig("single", "single")
+
+      const invoice = await createInvoice(order, config);
+      const client = createClient(config, token)
+      const xml = client._generateInvoiceXML(invoice)
+      expect(xml).toMatchSnapshot();
+    })
+
+    test('Non-EU company', async () => {
+      const order = mockOrder("non-eu-company", "online-tickets")
+      const config = mockConfig("single", "single")
+
+      const invoice = await createInvoice(order, config);
+      const client = createClient(config, token)
+      const xml = client._generateInvoiceXML(invoice)
+      expect(xml).toMatchSnapshot();
+    })
+
+    test('Non-EU person', async () => {
+      const order = mockOrder("non-eu-person", "online-tickets")
       const config = mockConfig("single", "single")
 
       const invoice = await createInvoice(order, config);
