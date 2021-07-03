@@ -27,8 +27,8 @@
     "@jssc/szamlazz.js": "^4.2.0",
     "axios": "^0.21.1",
     "dedent": "^0.7.0",
-    "dotenv": "^8.2.0",
-    "fastify": "^3.14.2",
+    "dotenv": "^10.0.0",
+    "fastify": "^3.18.1",
     "fastify-helmet": "^5.3.1",
     "fastify-raw-body": "^3.1.0",
     "fastify-sensible": "^3.1.1",
@@ -39,18 +39,18 @@
     "yaml": "^1.10.2"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
-    "@types/node": "^14.14.37",
-    "@typescript-eslint/eslint-plugin": "^4.21.0",
-    "@typescript-eslint/parser": "^4.21.0",
-    "eslint": "^7.23.0",
-    "eslint-plugin-jest": "^24.3.4",
-    "jest": "^26.6.3",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^16.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "eslint": "^7.30.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "jest": "^27.0.6",
     "mockdate": "^3.0.5",
-    "nodemon": "^2.0.7",
-    "ts-jest": "^26.5.4",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "nodemon": "^2.0.9",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
   },
   "jest": {
     "testMatch": [
