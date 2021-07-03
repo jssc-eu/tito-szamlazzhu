@@ -82,6 +82,11 @@ const tickets = [
     release_id: 1219124,
     release_slug: 'qqtuetcorjg',
     release_title: 'Early Bird',
+    release: {
+      metadata: {
+         "online-service": false
+      }
+    },
   },
   {
     _type: 'line_item',
@@ -95,6 +100,11 @@ const tickets = [
     release_id: 1219124,
     release_slug: 'qqtuetcorjg',
     release_title: 'Free ticket',
+    release: {
+      metadata: {
+         "online-service": false
+      }
+    },
   },
   {
     _type: 'line_item',
@@ -108,6 +118,11 @@ const tickets = [
     release_id: 1219124,
     release_slug: 'qqtuetcorjg',
     release_title: 'Early Workshop ticket',
+    release: {
+      metadata: {
+         "online-service": false
+      }
+    },
   },
   {
     _type: 'line_item',
@@ -121,6 +136,11 @@ const tickets = [
     release_id: 1219124,
     release_slug: 'qqtuetcorjg',
     release_title: 'Early Double ticket',
+    release: {
+      metadata: {
+         "online-service": false
+      }
+    },
   },
   {
     _type: 'line_item',
@@ -134,6 +154,11 @@ const tickets = [
     release_id: 1219124,
     release_slug: 'qqtuetcorjg',
     release_title: 'Online admission ticket',
+    release: {
+      metadata: {
+         "online-service": true
+      }
+    },
   },
 ];
 
@@ -210,6 +235,10 @@ const testEvents = {
       {
         'ticket-name-contains': 'Workshop',
         'net-price': 45,
+      },
+      {
+        'ticket-name-contains': 'Online',
+        'net-price': 0,
       },
     ],
   },
@@ -437,8 +466,27 @@ describe('VAT TEHK type', () => {
 
     const items = getItemizedCosts(order, buyer, testEvents.multipleDateMultipleCatering);
 
-    expect(items[0].vat).toBe('TEHK');
-    expect(items[1].vat).toBe('TEHK');
+    expect(items[0].vat).toBe(27);
+    expect(items[1].vat).toBe(27);
+    expect(items[2].vat).toBe(27);
+    expect(items[3].vat).toBe(27);
+  });
+
+  test('EU Online Service with VAT', () => {
+    const order = deepClone(orderData);
+    order.line_items = [tickets[0], tickets[2], tickets[4]];
+
+    const buyer = deepClone(buyerData);
+
+    buyer.isTEHK = true;
+
+    const items = getItemizedCosts(order, buyer, testEvents.multipleDateMultipleCatering);
+
+    expect(items[0].vat).toBe(27);
+    expect(items[1].vat).toBe(27);
+    expect(items[2].vat).toBe(27);
+    expect(items[3].vat).toBe(27);
+    expect(items[4].vat).toBe('TEHK');
   });
 
   test('outside EU without VAT', () => {
@@ -467,6 +515,22 @@ describe('VAT TEHK type', () => {
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
+  });
+
+  test('outside EU Online Service with VAT', () => {
+    const order = deepClone(orderData);
+    order.line_items = [tickets[0], tickets[4]];
+
+    const buyer = deepClone(buyerData);
+
+    buyer.isTEHK = false;
+
+    const items = getItemizedCosts(order, buyer, testEvents.multipleDateMultipleCatering);
+
+    expect(items[0].vat).toBe(27);
+    expect(items[1].vat).toBe(27);
+    expect(items[2].vat).toBe(27);
+
   });
 });
 

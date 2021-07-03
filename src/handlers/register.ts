@@ -9,11 +9,6 @@ export default async (request, reply) => {
     receipt: {
       payment_provider,
     },
-    event: {
-      account_slug: account,
-      slug: event,
-    },
-    slug: registration,
   } = request.body;
 
   if (!payment_provider) {
@@ -22,7 +17,7 @@ export default async (request, reply) => {
   }
 
   try {
-    const order = await getTitoOrder(account, event, registration, process.env.TITO_API_TOKEN);
+    const order = await getTitoOrder(request.body, process.env.TITO_API_TOKEN);
     const invoice = await createInvoice(order, request.eventConfig);
 
     if (process.env.NODE_ENV === 'production') {

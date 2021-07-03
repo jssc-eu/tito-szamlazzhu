@@ -45,6 +45,40 @@ const ticketTypes = {
       release_title: 'Some Workshop',
     }
   ],
+  ["online-tickets"]: [
+    {
+      _type: 'line_item',
+      id: 6540964,
+      title: 'Early Bird',
+      created_at: '2019-12-08T21:08:04.000+01:00',
+      updated_at: '2019-12-08T21:08:04.000+01:00',
+      quantity: 2,
+      price: 205.0,
+      test_mode: true,
+      release_id: 1219124,
+      release_slug: 'qqtuetcorjg',
+      release_title: 'Early Bird',
+
+    },
+    {
+      _type: 'line_item',
+      id: 6540964,
+      title: 'Online seat',
+      created_at: '2019-12-08T21:08:04.000+01:00',
+      updated_at: '2019-12-08T21:08:04.000+01:00',
+      quantity: 2,
+      price: 80.0,
+      test_mode: true,
+      release_id: 1219124,
+      release_slug: 'qqtuetcorjg',
+      release_title: 'Online seat',
+      release: {
+        metadata: {
+           "online-service": true
+        }
+      },
+    }
+  ],
 }
 
 const buyerTypes = {
