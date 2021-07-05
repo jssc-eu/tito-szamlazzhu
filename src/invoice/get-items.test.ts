@@ -335,7 +335,8 @@ describe('catering', () => {
     const items = getItemizedCosts(order, buyerData, testEvents.fixDateSingleCatering);
     expect(items[0].label).toBe('Early Bird');
     expect(items[0].comment).toBe('Ticket for JSConf Budapest 2021, September 23, 2020');
-    expect(items[1].label).toBe('Conference catering fee');
+    expect(items[1].label).toBe('Mediated services');
+    expect(items[1].comment).toBe('Conference catering fee');
   });
 
   test('rounds prices to 2 digits', () => {
@@ -398,7 +399,8 @@ describe('event date', () => {
     expect(items).toHaveLength(2);
     expect(items[0].label).toBe('Early Workshop ticket');
     expect(items[0].comment).toBe('Ticket for JSConf Budapest 2021, September 23, 2020');
-    expect(items[1].label).toBe('Conference catering fee');
+    expect(items[1].label).toBe('Mediated services');
+    expect(items[1].comment).toBe('Conference catering fee');
   });
 
   test('multiple orders with different date', () => {
