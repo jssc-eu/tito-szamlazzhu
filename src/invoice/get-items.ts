@@ -59,7 +59,8 @@ export default (order, buyer: Buyer, eventConfig) => order.line_items.reduce((it
 
     if (cateringPartial !== 0) {
       const cateringItem: Item = {
-        label: 'Conference catering fee',
+        label: 'Mediated services',
+        comment: 'Conference catering fee',
         quantity,
         unit: 'qt',
         vat: vatRate,
