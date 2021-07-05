@@ -120,13 +120,14 @@ events:
     tito-signature-validator-env: TITO_TOKEN_JS
 
 
-  integration-test-event-2020:
-    label: "JSConf Budapest 2020"
+
+  integration-test-event-2022:
+    label: "JSConf Budapest 2022"
     dates:
       - ticket-name-contains: "*"
-        date: "September 24-25, 2020"
+        date: "September 24-25, 2022"
       - ticket-name-contains: "workshop"
-        date: "September 23, 2020"
+        date: "September 23, 2022"
     catering:
       - ticket-name-contains: "workshop"
         net-price: 20
@@ -135,7 +136,7 @@ events:
       - ticket-name-contains: "*"
         net-price: 40
     invoice:
-      id-prefix: "WIPAO"
+      id-prefix: "JSSCT"
       logo-image: "JSCBP-szamlazzhu.png"
       comment: |
         The invoice includes mediated services.
@@ -145,18 +146,14 @@ events:
       currency: EUR
     email:
       reply-to-address: "nec@jsconfbp.com"
-      subject: "Your invoice for Integration Test Event 2020"
+      subject: "Your invoice for Integration Test Event 2022"
       message: |
         Dear Attendee!
-
-        Thank you for taking part in Reinforce AI Conference 2020.
-
+        Thank you for taking part in Reinforce AI Conference 2022.
         Please find attached our official invoice for the Reinforce AI conference.
         In case you have an issue with the invoice please reply to this e-mail.
         In case you have a general question regarding the conference please write to: hello@reinforceconf.com
-
         The Reinforce conference team
-
     bank:
       name: "Raiffeisen Bank, SWIFT: UBRTHUHB"
       account-number: "HU18-1201-0659-0160-2199-0020-0008"
