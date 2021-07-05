@@ -64,7 +64,7 @@ This document was issued electronically and is therefore valid without signature
     <megjegyzes>Ticket for JSConf Budapest 2021, September 23, 2020</megjegyzes>
   </tetel>
   <tetel>
-    <megnevezes>Conference catering fee</megnevezes>
+    <megnevezes>Mediated services</megnevezes>
     <mennyiseg>2</mennyiseg>
     <mennyisegiEgyseg>qt</mennyisegiEgyseg>
     <nettoEgysegar>90.3</nettoEgysegar>
@@ -72,6 +72,7 @@ This document was issued electronically and is therefore valid without signature
     <nettoErtek>180.60000000000002</nettoErtek>
     <afaErtek>48.76</afaErtek>
     <bruttoErtek>229.36</bruttoErtek>
+    <megjegyzes>Conference catering fee</megjegyzes>
   </tetel>
   </tetelek>
 </xmlszamla>"
@@ -141,7 +142,7 @@ This document was issued electronically and is therefore valid without signature
     <megjegyzes>Ticket for JSConf Budapest 2021, September 23, 2020</megjegyzes>
   </tetel>
   <tetel>
-    <megnevezes>Conference catering fee</megnevezes>
+    <megnevezes>Mediated services</megnevezes>
     <mennyiseg>2</mennyiseg>
     <mennyisegiEgyseg>qt</mennyisegiEgyseg>
     <nettoEgysegar>90.3</nettoEgysegar>
@@ -149,6 +150,7 @@ This document was issued electronically and is therefore valid without signature
     <nettoErtek>180.60000000000002</nettoErtek>
     <afaErtek>48.76</afaErtek>
     <bruttoErtek>229.36</bruttoErtek>
+    <megjegyzes>Conference catering fee</megjegyzes>
   </tetel>
   </tetelek>
 </xmlszamla>"
