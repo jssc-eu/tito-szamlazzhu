@@ -1,4 +1,5 @@
 import countryCodes from '../lib/countrycodes';
+import { VatRate } from '../szamlazzhu/types';
 
 export default (order): number|string => {
   const {
@@ -9,13 +10,12 @@ export default (order): number|string => {
     },
   } = order;
 
-
   const isEU = countryCodes(countryCode).isEuropean();
   const nonEu = !countryCodes(countryCode).isHungarian() && !countryCodes(countryCode).isEuropean();
 
   if (company_name && vat_number !== '0' && (isEU || nonEu)) {
-    return 'TEHK';
+    return VatRate.TEHK;
   }
 
-  return 27;
+  return VatRate.Regular;
 };

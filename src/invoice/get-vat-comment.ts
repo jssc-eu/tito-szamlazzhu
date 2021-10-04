@@ -1,10 +1,10 @@
 import countryCodes from '../lib/countrycodes';
-import { Buyer } from '../szamlazzhu/types';
+import { Buyer, Item, VatRate } from '../szamlazzhu/types';
 
 export const NON_VAT_ACT = 'Falling outside the territorial scope of the VAT Act.';
 export const REVERSE_CHARGE_VAT = 'Reverse charge VAT.';
 
-export default (buyer: Buyer) => {
+export default (buyer: Buyer, items: Item[] ) => {
   const isHU = countryCodes(buyer.country).isHungarian();
   const isEU = countryCodes(buyer.country).isEuropean();
 
@@ -12,7 +12,7 @@ export default (buyer: Buyer) => {
 
   if (buyer.taxNumber === '' && isEU) return NON_VAT_ACT;
 
-  if (isEU && buyer.isTEHK) return REVERSE_CHARGE_VAT;
+  if (items.some(item => item.vat === VatRate.TEHK)) return REVERSE_CHARGE_VAT;
 
   if (!isHU && !isEU) return NON_VAT_ACT;
 

@@ -110,6 +110,7 @@ const token = 'ABCDEFGHIJK'
       const config = mockConfig("single", "single")
 
       const invoice = await createInvoice(order, config);
+
       const client = createClient(config, token)
       const xml = client._generateInvoiceXML(invoice)
       expect(xml).toMatchSnapshot();
