@@ -4,6 +4,10 @@ const deepClone = data => JSON.parse(JSON.stringify(data));
 const cateringTypes = {
   ["single"]: [
     {
+      'ticket-name-contains': 'online',
+      'net-price': 0,
+    },
+    {
       'ticket-name-contains': '*',
       'net-price': 90.3,
     },

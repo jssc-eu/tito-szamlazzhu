@@ -16,7 +16,7 @@ export default async (
 ) => {
   const seller = getSeller(config);
   const buyer = await getBuyer(order);
-  const items = getItems(order, buyer, config).map(item => new Item(item));
+  const items = getItems(order, buyer, config);
 
   if (process.env.DEBUG) {
     console.warn(yaml.stringify(order));
@@ -26,8 +26,9 @@ export default async (
   const orderNumber = order.reference;
   const invoiceIdPrefix = config.invoice['id-prefix'];
   const logoImage = config.invoice['logo-image'];
-  const comment = getVATComment(buyer) + '\n' + config.invoice.comment;
+  const comment = getVATComment(buyer, items) + '\n' + config.invoice.comment;
 
+  const szamlazzItems = items.map(item => new Item(item));
   return new Invoice({
     paymentMethod: getPaymentMethod(order),
     currency: szamlazz.Currency[currency],
@@ -38,7 +39,7 @@ export default async (
     orderNumber,
     seller: new Seller(seller),
     buyer: new Buyer(buyer),
-    items,
+    items: szamlazzItems,
     paid: true,
   });
 };

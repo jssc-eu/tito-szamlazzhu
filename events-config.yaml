@@ -90,7 +90,7 @@ events:
         date: "June 2-3, 2022"
     catering:
       - ticket-name-contains: "*"
-        net-price: 98
+        net-price: 120
     invoice:
       id-prefix: "JSCBP"
       logo-image: "JSCBP-szamlazzhu.png"
