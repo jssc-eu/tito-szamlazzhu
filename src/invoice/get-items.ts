@@ -9,7 +9,7 @@ const getDate = (ticket, config) => {
   return getPropertyByTicketType(ticket, 'date', config.dates);
 };
 
-const getVatRate = (buyer, isOnlineService) => {
+const getVatRateField = (buyer, isOnlineService) => {
   if (isOnlineService && buyer.isTEHK) {
     return VatRate.TEHK
   }
@@ -35,7 +35,7 @@ export default (order, buyer: Buyer, eventConfig) => order.line_items.reduce((it
 
     const onlineService = release_metadata?.['online-service'] ?? false;
 
-    const vatRate = getVatRate(buyer, onlineService);
+    const vatRate = getVatRateField(buyer, onlineService);
     const date = getDate(title, eventConfig);
     const cateringPartial = getCateringPerTicket(title, eventConfig);
     const ticketPartial = roundTo(price - (cateringPartial * 1.27), 2);

@@ -17,7 +17,7 @@ exports[`vat info line is undefined if vat contains whitespace at 1`] = `
     <fizmod>PayPal</fizmod>
     <penznem>EUR</penznem>
     <szamlaNyelve>en</szamlaNyelve>
-    <megjegyzes>Reverse charge VAT.
+    <megjegyzes>
 The invoice includes mediated services.
 Paid in full.
 This document was issued electronically and is therefore valid without signature.</megjegyzes>
@@ -95,7 +95,7 @@ exports[`vat info line is undefined if vat contains whitespace fr 1`] = `
     <fizmod>PayPal</fizmod>
     <penznem>EUR</penznem>
     <szamlaNyelve>en</szamlaNyelve>
-    <megjegyzes>Reverse charge VAT.
+    <megjegyzes>
 The invoice includes mediated services.
 Paid in full.
 This document was issued electronically and is therefore valid without signature.</megjegyzes>

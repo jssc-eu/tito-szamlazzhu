@@ -17,7 +17,7 @@ exports[`date and catering matchers EU company with  single match date 1`] = `
     <fizmod>PayPal</fizmod>
     <penznem>EUR</penznem>
     <szamlaNyelve>en</szamlaNyelve>
-    <megjegyzes>Reverse charge VAT.
+    <megjegyzes>
 The invoice includes mediated services.
 Paid in full.
 This document was issued electronically and is therefore valid without signature.</megjegyzes>
@@ -95,7 +95,7 @@ exports[`date and catering matchers EU company with workshops 1`] = `
     <fizmod>PayPal</fizmod>
     <penznem>EUR</penznem>
     <szamlaNyelve>en</szamlaNyelve>
-    <megjegyzes>Reverse charge VAT.
+    <megjegyzes>
 The invoice includes mediated services.
 Paid in full.
 This document was issued electronically and is therefore valid without signature.</megjegyzes>
@@ -195,7 +195,7 @@ exports[`date and catering matchers EU company with workshops without catering 1
     <fizmod>PayPal</fizmod>
     <penznem>EUR</penznem>
     <szamlaNyelve>en</szamlaNyelve>
-    <megjegyzes>Reverse charge VAT.
+    <megjegyzes>
 The invoice includes mediated services.
 Paid in full.
 This document was issued electronically and is therefore valid without signature.</megjegyzes>
@@ -551,7 +551,7 @@ exports[`vat entries EU company 1`] = `
     <fizmod>PayPal</fizmod>
     <penznem>EUR</penznem>
     <szamlaNyelve>en</szamlaNyelve>
-    <megjegyzes>Reverse charge VAT.
+    <megjegyzes>
 The invoice includes mediated services.
 Paid in full.
 This document was issued electronically and is therefore valid without signature.</megjegyzes>
@@ -1080,23 +1080,12 @@ This document was issued electronically and is therefore valid without signature
     <megnevezes>Online seat</megnevezes>
     <mennyiseg>2</mennyiseg>
     <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>-34.68</nettoEgysegar>
+    <nettoEgysegar>80</nettoEgysegar>
     <afakulcs>TEHK</afakulcs>
-    <nettoErtek>-69.36</nettoErtek>
+    <nettoErtek>160</nettoErtek>
     <afaErtek>0</afaErtek>
-    <bruttoErtek>-69.36</bruttoErtek>
+    <bruttoErtek>160</bruttoErtek>
     <megjegyzes>Ticket for JSConf Budapest 2021, September 23, 2020</megjegyzes>
-  </tetel>
-  <tetel>
-    <megnevezes>Mediated services</megnevezes>
-    <mennyiseg>2</mennyiseg>
-    <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>114.68</nettoEgysegar>
-    <afakulcs>TEHK</afakulcs>
-    <nettoErtek>229.36</nettoErtek>
-    <afaErtek>0</afaErtek>
-    <bruttoErtek>229.36</bruttoErtek>
-    <megjegyzes>Conference catering fee</megjegyzes>
   </tetel>
   </tetelek>
 </xmlszamla>"
@@ -1180,23 +1169,12 @@ This document was issued electronically and is therefore valid without signature
     <megnevezes>Online seat</megnevezes>
     <mennyiseg>2</mennyiseg>
     <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>-27.3</nettoEgysegar>
+    <nettoEgysegar>62.99</nettoEgysegar>
     <afakulcs>27</afakulcs>
-    <nettoErtek>-54.61</nettoErtek>
-    <afaErtek>-14.75</afaErtek>
-    <bruttoErtek>-69.36</bruttoErtek>
+    <nettoErtek>125.97999999999999</nettoErtek>
+    <afaErtek>34.02</afaErtek>
+    <bruttoErtek>160</bruttoErtek>
     <megjegyzes>Ticket for JSConf Budapest 2021, September 23, 2020</megjegyzes>
-  </tetel>
-  <tetel>
-    <megnevezes>Mediated services</megnevezes>
-    <mennyiseg>2</mennyiseg>
-    <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>90.3</nettoEgysegar>
-    <afakulcs>27</afakulcs>
-    <nettoErtek>180.60000000000002</nettoErtek>
-    <afaErtek>48.76</afaErtek>
-    <bruttoErtek>229.36</bruttoErtek>
-    <megjegyzes>Conference catering fee</megjegyzes>
   </tetel>
   </tetelek>
 </xmlszamla>"
@@ -1280,23 +1258,12 @@ This document was issued electronically and is therefore valid without signature
     <megnevezes>Online seat</megnevezes>
     <mennyiseg>2</mennyiseg>
     <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>-27.3</nettoEgysegar>
+    <nettoEgysegar>62.99</nettoEgysegar>
     <afakulcs>27</afakulcs>
-    <nettoErtek>-54.61</nettoErtek>
-    <afaErtek>-14.75</afaErtek>
-    <bruttoErtek>-69.36</bruttoErtek>
+    <nettoErtek>125.97999999999999</nettoErtek>
+    <afaErtek>34.02</afaErtek>
+    <bruttoErtek>160</bruttoErtek>
     <megjegyzes>Ticket for JSConf Budapest 2021, September 23, 2020</megjegyzes>
-  </tetel>
-  <tetel>
-    <megnevezes>Mediated services</megnevezes>
-    <mennyiseg>2</mennyiseg>
-    <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>90.3</nettoEgysegar>
-    <afakulcs>27</afakulcs>
-    <nettoErtek>180.60000000000002</nettoErtek>
-    <afaErtek>48.76</afaErtek>
-    <bruttoErtek>229.36</bruttoErtek>
-    <megjegyzes>Conference catering fee</megjegyzes>
   </tetel>
   </tetelek>
 </xmlszamla>"
@@ -1380,23 +1347,12 @@ This document was issued electronically and is therefore valid without signature
     <megnevezes>Online seat</megnevezes>
     <mennyiseg>2</mennyiseg>
     <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>-27.3</nettoEgysegar>
+    <nettoEgysegar>62.99</nettoEgysegar>
     <afakulcs>27</afakulcs>
-    <nettoErtek>-54.61</nettoErtek>
-    <afaErtek>-14.75</afaErtek>
-    <bruttoErtek>-69.36</bruttoErtek>
+    <nettoErtek>125.97999999999999</nettoErtek>
+    <afaErtek>34.02</afaErtek>
+    <bruttoErtek>160</bruttoErtek>
     <megjegyzes>Ticket for JSConf Budapest 2021, September 23, 2020</megjegyzes>
-  </tetel>
-  <tetel>
-    <megnevezes>Mediated services</megnevezes>
-    <mennyiseg>2</mennyiseg>
-    <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>90.3</nettoEgysegar>
-    <afakulcs>27</afakulcs>
-    <nettoErtek>180.60000000000002</nettoErtek>
-    <afaErtek>48.76</afaErtek>
-    <bruttoErtek>229.36</bruttoErtek>
-    <megjegyzes>Conference catering fee</megjegyzes>
   </tetel>
   </tetelek>
 </xmlszamla>"
@@ -1480,23 +1436,12 @@ This document was issued electronically and is therefore valid without signature
     <megnevezes>Online seat</megnevezes>
     <mennyiseg>2</mennyiseg>
     <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>-27.3</nettoEgysegar>
+    <nettoEgysegar>62.99</nettoEgysegar>
     <afakulcs>27</afakulcs>
-    <nettoErtek>-54.61</nettoErtek>
-    <afaErtek>-14.75</afaErtek>
-    <bruttoErtek>-69.36</bruttoErtek>
+    <nettoErtek>125.97999999999999</nettoErtek>
+    <afaErtek>34.02</afaErtek>
+    <bruttoErtek>160</bruttoErtek>
     <megjegyzes>Ticket for JSConf Budapest 2021, September 23, 2020</megjegyzes>
-  </tetel>
-  <tetel>
-    <megnevezes>Mediated services</megnevezes>
-    <mennyiseg>2</mennyiseg>
-    <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>90.3</nettoEgysegar>
-    <afakulcs>27</afakulcs>
-    <nettoErtek>180.60000000000002</nettoErtek>
-    <afaErtek>48.76</afaErtek>
-    <bruttoErtek>229.36</bruttoErtek>
-    <megjegyzes>Conference catering fee</megjegyzes>
   </tetel>
   </tetelek>
 </xmlszamla>"
@@ -1580,23 +1525,12 @@ This document was issued electronically and is therefore valid without signature
     <megnevezes>Online seat</megnevezes>
     <mennyiseg>2</mennyiseg>
     <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>-27.3</nettoEgysegar>
+    <nettoEgysegar>62.99</nettoEgysegar>
     <afakulcs>27</afakulcs>
-    <nettoErtek>-54.61</nettoErtek>
-    <afaErtek>-14.75</afaErtek>
-    <bruttoErtek>-69.36</bruttoErtek>
+    <nettoErtek>125.97999999999999</nettoErtek>
+    <afaErtek>34.02</afaErtek>
+    <bruttoErtek>160</bruttoErtek>
     <megjegyzes>Ticket for JSConf Budapest 2021, September 23, 2020</megjegyzes>
-  </tetel>
-  <tetel>
-    <megnevezes>Mediated services</megnevezes>
-    <mennyiseg>2</mennyiseg>
-    <mennyisegiEgyseg>qt</mennyisegiEgyseg>
-    <nettoEgysegar>90.3</nettoEgysegar>
-    <afakulcs>27</afakulcs>
-    <nettoErtek>180.60000000000002</nettoErtek>
-    <afaErtek>48.76</afaErtek>
-    <bruttoErtek>229.36</bruttoErtek>
-    <megjegyzes>Conference catering fee</megjegyzes>
   </tetel>
   </tetelek>
 </xmlszamla>"
