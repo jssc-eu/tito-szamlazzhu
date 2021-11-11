@@ -115,8 +115,8 @@ events:
         The JSConf Budapest team
 
     bank:
-      name: "Raiffeisen Bank, SWIFT: UBRTHUHB"
-      accountNumber: "HU18-1201-0659-0160-2199-0020-0008"
+      name: "Wise, SWIFT/BIC: TRWIBEB1XXX"
+      accountNumber: "BE46-9671-1672-7136"
     tito-signature-validator-env: TITO_TOKEN_JS
 
 
