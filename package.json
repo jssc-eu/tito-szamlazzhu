@@ -35,7 +35,7 @@
     "form-data": "^4.0.0",
     "mailgun-js": "^0.22.0",
     "round-to": "^5.0.0",
-    "validate-vat": "^0.7.0",
+    "validate-vat-ts": "^1.2.1",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
