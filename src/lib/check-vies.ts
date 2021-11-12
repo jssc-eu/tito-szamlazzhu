@@ -44,6 +44,8 @@ export default async (countryCode: string, vatId: string) => {
 
   const validationInfo: ViesValidationResponse = await validateVat(ShortCountryCodes[countryCode], vatNumber);
 
+  console.info(validationInfo);
+
   if (typeof validationInfo === 'undefined') {
     throw Error("No validation info received");
   }
