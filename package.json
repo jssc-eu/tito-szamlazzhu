@@ -1,88 +1,92 @@
 {
-  "name": "tito-szamlazzhu",
+  "name": "proforma",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "scripts": {
-    "lint": "eslint --ext ts src",
-    "test": "jest",
-    "build": "rm -rf ./build && tsc",
-    "coverage": "jest --coverage",
-    "watch": "nodemon",
-    "dev": "node -r ts-node/register -r dotenv/config src/index.ts",
-    "start": "node dist/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jssc-eu/tito-szamlazzhu.git"
-  },
-  "keywords": [],
-  "author": "nec@jsconfbp.com",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jssc-eu/tito-szamlazzhu/issues"
-  },
-  "homepage": "https://github.com/jssc-eu/tito-szamlazzhu#readme",
+  "main": "index.js",
   "dependencies": {
-    "@jssc/szamlazz.js": "^4.2.0",
-    "axios": "^0.21.2",
+    "@auth0/nextjs-auth0": "^1.6.2",
+    "@emotion/cache": "^11.7.1",
+    "@emotion/react": "^11.7.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.6.0",
+    "@hapi/boom": "^9.1.4",
+    "@jssc/szamlazz.js": "^4.2.1",
+    "@mui/icons-material": "^5.2.4",
+    "@mui/material": "^5.2.4",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^17.0.8",
+    "@types/react": "^17.0.37",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "body-parser": "^1.19.1",
+    "clsx": "^1.1.1",
+    "country-list": "^2.2.0",
     "dedent": "^0.7.0",
-    "dotenv": "^10.0.0",
-    "fastify": "^3.18.1",
-    "fastify-helmet": "^5.3.1",
-    "fastify-raw-body": "^3.1.0",
-    "fastify-sensible": "^3.1.1",
-    "form-data": "^4.0.0",
+    "dotenv": "^12.0.3",
+    "eslint": "^8.5.0",
+    "eslint-config-next": "^12.0.7",
+    "eslint-plugin-jest": "^25.3.0",
+    "eslint-plugin-next": "^0.0.0",
+    "jest": "^27.4.5",
     "mailgun-js": "^0.22.0",
-    "round-to": "^5.0.0",
+    "mockdate": "^3.0.5",
+    "next": "^12.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "round-to": "^6.0.0",
+    "ts-jest": "^27.1.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4",
     "validate-vat-ts": "^1.2.1",
     "yaml": "^1.10.2"
   },
-  "devDependencies": {
-    "@types/jest": "^26.0.23",
-    "@types/node": "^16.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.1",
-    "@typescript-eslint/parser": "^4.28.1",
-    "eslint": "^7.30.0",
-    "eslint-plugin-jest": "^24.3.6",
-    "jest": "^27.0.6",
-    "mockdate": "^3.0.5",
-    "nodemon": "^2.0.9",
-    "ts-jest": "^27.0.3",
-    "ts-node": "^10.0.0",
-    "typescript": "^4.3.5"
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest"
   },
+  "engines": {
+    "node": "16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jssc-eu/proforma.git"
+  },
+  "keywords": [],
+  "author": "nec@jsconfbp.com",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/jssc-eu/proforma/issues"
+  },
+  "homepage": "https://github.com/jssc-eu/proforma#readme",
   "jest": {
     "testMatch": [
-      "<rootDir>/src/**/*.test.js",
-      "<rootDir>/src/**/*.test.ts",
+      "<rootDir>/**/*.test.js",
+      "<rootDir>/**/*.test.ts",
       "<rootDir>/test/**/*.test.js",
       "<rootDir>/test/**/*.test.ts"
     ],
     "transform": {
-      "^.+\\.ts?$": "ts-jest"
+      "^.+\\.ts?$": "ts-jest",
+      "node_modules/round-to/.+\\.(j|t)s?$": "ts-jest"
     },
+    "transformIgnorePatterns": [
+      "node_modules/(?!round-to/.*)"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>/node_modules/",
+      "<rootDir>/.next/",
       "<rootDir>/dist/",
       "<rootDir>/szamlazz/"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "."
+    ],
+    "setupFiles": [
+      "<rootDir>/test/dotenv-config.js"
     ]
-  },
-  "engines": {
-    "node": "14.x"
-  },
-  "nodemonConfig": {
-    "delay": "1000",
-    "exec": "npm run dev",
-    "watch": [
-      "src/",
-      "events-config.yaml",
-      ".env"
-    ],
-    "ignore": [
-      "**/*.test.ts",
-      "**/*.spec.ts"
-    ],
-    "ext": "ts"
   }
 }
