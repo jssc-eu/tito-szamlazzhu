@@ -43,7 +43,7 @@ Add it to the app settings as an ENV variable `TITO_WEBHOOK_TOKEN`
 
 Get your webhook URL:
 
-`https://__YOUR_DEPLOYED_HEROKU_URL__/register-purchase?token=__TITO_WEBHOOK_TOKEN__`
+`https://__YOUR_DEPLOYED_HEROKU_URL__/api/register-purchase?token=__TITO_WEBHOOK_TOKEN__`
 
 - Go to your Ti.to event `Dashboard > Settings > Webhook endpoints`
 - enter the webhook url you created above
@@ -85,6 +85,20 @@ These are set automatically if you set up Mailgun on Heroku
 - **MAILGUN_SMTP_PASSWORD**
 - **MAILGUN_SMTP_PORT** Default: 587
 - **MAILGUN_SMTP_SERVER** Default: smtp.mailgun.org
+
+#### Auth0 parameters for the UI authentication
+
+Obtain these from the Application setup page on Auth0
+
+- **AUTH0_BASE_URL**
+- **AUTH0_DOMAIN**
+- **AUTH0_CLIENT_ID**
+- **AUTH0_CLIENT_SECRET**
+- **AUTH0_SECRET**
+- **AUTH0_REDIRECT_URI** Set it to: `/api/auth/callback`
+- **AUTH0_LOGOUT_REDIRECT_URI** Set to `/`
+- **AUTH0_SCOPE** Set to `openid profile`
+- **SESSION_COOKIE_LIFETIME** Set to `7200`
 
 #### Error reporting
 
@@ -218,7 +232,6 @@ Example tito metadata:
 ```
 
 ![](tisza-tito-metadata.png)
-
 
 ## License
 

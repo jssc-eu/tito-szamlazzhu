@@ -1,6 +1,6 @@
 import MockDate from 'mockdate'
-import createInvoice from '../src/invoice/create'
-import createClient from '../src/szamlazzhu/create-client'
+import createInvoice from 'lib/invoice/create'
+import createClient from 'lib/szamlazzhu/create-client'
 
 import mockOrder from './mocks/createOrder'
 import mockConfig from './mocks/createConfig'
