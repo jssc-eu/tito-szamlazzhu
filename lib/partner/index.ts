@@ -23,7 +23,11 @@ export default async function getPartner(raw: RawPartner): Promise<Partner> {
   const taxNumber = getTaxNumber(raw);
   const isEU = countryCodes(countryCode).isEuropean();
 
-  const buyerName = companyName || name;
+  let buyerName = companyName || name;
+  if (isEU && companyName && taxNumber == '') {
+    buyerName = name
+  }
+
   const addressWithState = `${address.replace(/[\r]?\n/g, ' ')} ${state}`;
   let isTEHK = false;
 

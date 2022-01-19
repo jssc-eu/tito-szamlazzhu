@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`date and catering matchers EU company with  single match date 1`] = `
+exports[`date and catering matchers EU company with single match date 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
 <xmlszamla xmlns=\\"http://www.szamlazz.hu/xmlszamla\\" xmlns:xsi=\\"http://www.w3.org/2001/XMLSchema-instance\\" xsi:schemaLocation=\\"http://www.szamlazz.hu/xmlszamla xmlszamla.xsd\\">
   <beallitasok>

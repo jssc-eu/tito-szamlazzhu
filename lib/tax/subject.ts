@@ -9,15 +9,22 @@ export default function getTaxSubject(raw: Partial<RawPartner>):szamlazz.TaxSubj
     taxNumber,
   } = raw;
 
+  const isEU = countryCodes(countryCode).isEuropean();
+  const isHU = countryCodes(countryCode).isHungarian();
+
+  if (companyName && isEU && taxNumber === '0') {
+    return szamlazz.TaxSubject.NoTaxID;
+  }
+
   if (companyName === '' && taxNumber === '0') {
     return szamlazz.TaxSubject.NoTaxID;
   }
 
-  if (companyName && countryCodes(countryCode).isHungarian()) {
+  if (companyName && isHU) {
     return szamlazz.TaxSubject.HungarianTaxID;
   }
 
-  if (companyName && countryCodes(countryCode).isEuropean()) {
+  if (companyName && isEU) {
     return szamlazz.TaxSubject.EUCompany;
   }
 

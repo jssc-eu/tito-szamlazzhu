@@ -160,7 +160,7 @@ describe('date and catering matchers', () => {
     expect(xml).toMatchSnapshot();
   })
 
-  test('EU company with  single match date', async () => {
+  test('EU company with single match date', async () => {
     const order = mockOrder("eu-company", "tickets")
     const config = mockConfig("single", "single-match")
 
