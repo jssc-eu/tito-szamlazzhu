@@ -26,6 +26,17 @@ describe('get tax subject', () => {
       expect(taxSubject).toBe(szamlazz.TaxSubject.NoTaxID);
   });
 
+  test('eu company without vat id', () => {
+    const order: RawPartner = JSON.parse(JSON.stringify(partner));
+
+    order.companyName = 'szalami';
+    order.countryCode = 'FR';
+    order.taxNumber = '0';
+
+    const taxSubject = getTaxSubject(order);
+    expect(taxSubject).toBe(szamlazz.TaxSubject.NoTaxID);
+  });
+
   test('eu vat subject', () => {
     const order: RawPartner = JSON.parse(JSON.stringify(partner));
 

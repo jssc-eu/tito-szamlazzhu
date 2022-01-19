@@ -22,14 +22,27 @@ describe('get buyer', () => {
   });
 
   test('buyer without vat number', async () => {
-    const order2 = { ...partner };
-    order2.taxNumber = '0';
+    const orderData = { ...partner };
+    orderData.taxNumber = '0';
 
-    const buyer = await getPartner(order2);
+    const buyer = await getPartner(orderData);
     expect(buyer.taxNumber).toBe('');
   });
-});
 
+
+  test('buyer EU company without vat number', async () => {
+    const orderData = { ...partner };
+
+    orderData.name = 'John Doe'
+    orderData.companyName = 'Szalami';
+    orderData.countryCode = 'FR';
+    orderData.taxNumber = '0';
+
+    const buyer = await getPartner(orderData);
+    expect(buyer.taxNumber).toBe('');
+    expect(buyer.name).toBe('John Doe');
+  });
+});
 
 describe('buyer VAT TEHK type', () => {
   test('HU without VAT', async () => {

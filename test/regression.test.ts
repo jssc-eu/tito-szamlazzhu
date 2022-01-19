@@ -66,4 +66,3 @@ describe('vat info line is undefined if vat contains whitespace', () => {
   })
 
 })
-
