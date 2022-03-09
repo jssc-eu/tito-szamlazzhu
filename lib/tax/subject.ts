@@ -6,7 +6,7 @@ export default function getTaxSubject(raw: Partial<RawPartner>):szamlazz.TaxSubj
   const {
     companyName,
     countryCode,
-    taxNumber,
+    taxNumber = '0',
   } = raw;
 
   const isEU = countryCodes(countryCode).isEuropean();
@@ -28,8 +28,12 @@ export default function getTaxSubject(raw: Partial<RawPartner>):szamlazz.TaxSubj
     return szamlazz.TaxSubject.EUCompany;
   }
 
-  if (companyName) {
+  if (companyName && taxNumber !== '0') {
     return szamlazz.TaxSubject.NonEUCompany;
+  }
+
+  if (companyName) {
+    return szamlazz.TaxSubject.NoTaxID;
   }
 
   return szamlazz.TaxSubject.Unknown;
