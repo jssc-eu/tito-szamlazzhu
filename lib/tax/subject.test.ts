@@ -26,7 +26,7 @@ describe('get tax subject', () => {
       expect(taxSubject).toBe(szamlazz.TaxSubject.NoTaxID);
   });
 
-  test('eu company without vat id', () => {
+  test('eu company without VAT id', () => {
     const order: RawPartner = JSON.parse(JSON.stringify(partner));
 
     order.companyName = 'szalami';
@@ -37,7 +37,7 @@ describe('get tax subject', () => {
     expect(taxSubject).toBe(szamlazz.TaxSubject.NoTaxID);
   });
 
-  test('eu vat subject', () => {
+  test('eu VAT subject', () => {
     const order: RawPartner = JSON.parse(JSON.stringify(partner));
 
     order.companyName = 'EU Company';
@@ -48,7 +48,7 @@ describe('get tax subject', () => {
     expect(taxSubject).toBe(szamlazz.TaxSubject.EUCompany);
   });
 
-  test('hungarian vat subject', () => {
+  test('hungarian VAT subject', () => {
     const order: RawPartner = JSON.parse(JSON.stringify(partner));
     order.companyName = 'Hungarian Company';
     order.countryCode = 'HU';
@@ -57,7 +57,7 @@ describe('get tax subject', () => {
     expect(taxSubject).toBe(szamlazz.TaxSubject.HungarianTaxID);
   });
 
-  test('non eu vat subject', () => {
+  test('non eu VAT subject', () => {
     const order: RawPartner = JSON.parse(JSON.stringify(partner));
 
     order.companyName = 'USA Company';
@@ -68,7 +68,7 @@ describe('get tax subject', () => {
     expect(taxSubject).toBe(szamlazz.TaxSubject.NonEUCompany);
   });
 
-  test('unknown vat subject status', () => {
+  test('unknown VAT subject status', () => {
     const order: RawPartner = JSON.parse(JSON.stringify(partner));
     order.companyName = '';
     order.countryCode = 'EE';
@@ -76,5 +76,15 @@ describe('get tax subject', () => {
 
     const taxSubject = getTaxSubject(order);
     expect(taxSubject).toBe(szamlazz.TaxSubject.Unknown);
+  });
+
+  test('non-EU unknown VAT subject status', () => {
+    const order: RawPartner = JSON.parse(JSON.stringify(partner));
+    order.companyName = 'Later';
+    order.countryCode = 'US';
+    order.taxNumber = '0';
+
+    const taxSubject = getTaxSubject(order);
+    expect(taxSubject).toBe(szamlazz.TaxSubject.NoTaxID);
   });
 });
