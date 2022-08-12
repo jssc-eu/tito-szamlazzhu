@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableFooter from '@mui/material/TableFooter';
 import TableRow from '@mui/material/TableRow';
+import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
@@ -32,6 +33,10 @@ export default function Sum ({ send, lineItems, company }) {
       setDisabled(true);
     }
   }, [context.lineItems, context.company]);
+
+  const updateComment = (value) => {
+    context.setComment(value);
+  }
 
   const total = context.lineItems.reduce((sum, item) => {
     const {
@@ -68,7 +73,24 @@ export default function Sum ({ send, lineItems, company }) {
         </TableRow>
       </TableBody>
       <TableFooter>
-      <TableRow
+        <TableRow
+          sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+        >
+          <TableCell component="th" scope="row" align="left" colSpan={ 5 }>
+          <TextField
+            id="comment"
+            label="Additional comment, Purchase Order number, etc ..."
+            variant="outlined"
+            type="text"
+            value={ context.comment }
+            onChange={ e => (updateComment(e.target.value)) }
+            sx={{ width: '100%'}}
+            multiline
+            rows={ 3 }
+          />
+          </TableCell>
+        </TableRow>
+        <TableRow
           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
           <TableCell component="th" scope="row" align="right" colSpan={ 5 }>
