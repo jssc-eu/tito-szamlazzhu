@@ -1,6 +1,6 @@
 import { RawPartner } from 'lib/types';
 
-export default (raw: Partial<RawPartner>): string => {
+const getIdentifier = (raw: Partial<RawPartner>): string => {
   const {
     email,
     companyName,
@@ -15,3 +15,5 @@ export default (raw: Partial<RawPartner>): string => {
 
   return email.replace(/[\s.@]/g, '_').replace(/_+/g, '_').toUpperCase();
 };
+
+export default getIdentifier

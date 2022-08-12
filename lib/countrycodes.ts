@@ -34,7 +34,9 @@ export interface CountryCode {
   isEuropean(): boolean;
 }
 
-export default (countryCode: string): CountryCode => ({
-    isHungarian: () => countryCode === 'HU',
-    isEuropean: () => EUCountryCodes.includes(countryCode),
-  });
+const createCountryCodeCheck = (countryCode: string): CountryCode => ({
+  isHungarian: () => countryCode === 'HU',
+  isEuropean: () => EUCountryCodes.includes(countryCode),
+});
+
+export default createCountryCodeCheck

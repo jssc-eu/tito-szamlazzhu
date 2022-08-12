@@ -1,4 +1,5 @@
-export default (event) => {
+
+const getSeller = (event) => {
   const { email, bank } = event;
 
   return { // everyting is optional
@@ -6,3 +7,5 @@ export default (event) => {
     email,
   };
 };
+
+export default getSeller;

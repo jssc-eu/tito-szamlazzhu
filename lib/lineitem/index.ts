@@ -17,7 +17,8 @@ const getVatRateField = (buyer, isOnlineService) => {
   return VatRate.Regular;
 };
 
-export default (rawItems: RawItem[], buyer: Partner, eventConfig) => rawItems.reduce((items, ticket) => {
+
+const getLineItems = (rawItems: RawItem[], buyer: Partner, eventConfig) => rawItems.reduce((items, ticket) => {
     const {
       price,
       quantity,
@@ -75,3 +76,6 @@ export default (rawItems: RawItem[], buyer: Partner, eventConfig) => rawItems.re
 
     return items;
   }, []);
+
+
+export default getLineItems;
