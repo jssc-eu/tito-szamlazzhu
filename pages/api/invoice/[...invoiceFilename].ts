@@ -6,7 +6,7 @@ import createClient from 'lib/szamlazzhu/create-client';
 
 export default async function callback(req, res) {
   try {
-    await authApi(req, res, 'POST');
+    await authApi(req, res, 'GET');
 
     const {
       invoiceFilename,
