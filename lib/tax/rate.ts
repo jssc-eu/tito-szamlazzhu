@@ -1,7 +1,7 @@
 import countryCodes from 'lib/countrycodes';
 import { RawPartner, VatRate } from 'lib/types';
 
-export default (raw: RawPartner): VatRate => {
+const getTaxRate = (raw: RawPartner): VatRate => {
   const {
     companyName,
     countryCode,
@@ -17,3 +17,5 @@ export default (raw: RawPartner): VatRate => {
 
   return VatRate.Regular;
 };
+
+export default getTaxRate;

@@ -33,7 +33,7 @@ enum ShortCountryCodes {
   XI = CountryCodes.NorthernIreland
 };
 
-export default async (countryCode: string, vatId: string) => {
+const checkVIES = async (countryCode: string, vatId: string) => {
   let vatNumber = vatId;
   const rgx = new RegExp(`^${countryCode}`, 'gi');
   if (rgx.test(vatNumber)) {
@@ -66,3 +66,5 @@ export default async (countryCode: string, vatId: string) => {
     return false
   }
 };
+
+export default checkVIES;

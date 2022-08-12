@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Header from './header';
 
 function Layout({ user, loading = false, children }) {
   return (

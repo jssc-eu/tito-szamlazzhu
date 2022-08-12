@@ -1,6 +1,6 @@
 import szamlazz from '@jssc/szamlazz.js';
 
-export default (order) => {
+const getPaymentMethod = (order) => {
   const {
     payment_option_name,
   } = order;
@@ -13,3 +13,5 @@ export default (order) => {
   // paypal_express_checkout
   return szamlazz.PaymentMethod.PayPal;
 };
+
+export default getPaymentMethod

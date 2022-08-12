@@ -1,7 +1,7 @@
 import Boom from '@hapi/boom';
 import auth0 from 'lib/auth0';
 
-export default async function (req, res, allowed = 'GET') {
+const auth = async function (req, res, allowed = 'GET') {
   if (req.method !== allowed) {
     throw Boom.notFound();
   }
@@ -11,3 +11,5 @@ export default async function (req, res, allowed = 'GET') {
     throw Boom.notFound();
   }
 }
+
+export default auth
