@@ -1,5 +1,5 @@
 // import validateVat from 'validate-vat';
-import validateVat, { CountryCodes, ViesValidationResponse } from 'validate-vat-ts';
+import validateVat, { CountryCodes, ViesValidationResponse, ViesServerError, ViesClientError } from 'validate-vat-ts';
 import dedent from 'dedent'
 
 enum ShortCountryCodes {
@@ -56,12 +56,13 @@ export default async (countryCode: string, vatId: string) => {
     return validationInfo.valid;
   } catch (e) {
     console.error(dedent`
-      Could not verify VAT numnber using the EU VIES service.
+      Could not verify VAT number using the EU VIES service.
       Error details:
 
       ${e?.message}
 
       ${e?.soapResponse.match(/<H2>(.*?)<\/H2>/m)?.[0]}
     `)
+    return false
   }
 };
