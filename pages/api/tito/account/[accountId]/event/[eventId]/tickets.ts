@@ -10,7 +10,6 @@ export default async function callback(req, res) {
 
     const data = await ticketsReq.json();
     const response = data.releases
-      .filter(d => (!d.secret && !d.sold_out && !d.off_sale))
       .map(d => ({
           title: d.title,
           price: d.price,
