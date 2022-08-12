@@ -1,5 +1,6 @@
 // import validateVat from 'validate-vat';
 import validateVat, { CountryCodes, ViesValidationResponse } from 'validate-vat-ts';
+import dedent from 'dedent'
 
 enum ShortCountryCodes {
   AT = CountryCodes.Austria,
@@ -45,11 +46,22 @@ export default async (countryCode: string, vatId: string) => {
     return true
   }
 
-  const validationInfo: ViesValidationResponse = await validateVat(ShortCountryCodes[countryCode], vatNumber);
+  try {
+    const validationInfo: ViesValidationResponse = await validateVat(ShortCountryCodes[countryCode], vatNumber);
 
-  if (typeof validationInfo === 'undefined') {
-    throw Error('No validation info received');
+    if (typeof validationInfo === 'undefined') {
+      throw Error('No validation info received');
+    }
+
+    return validationInfo.valid;
+  } catch (e) {
+    console.error(dedent`
+      Could not verify VAT numnber using the EU VIES service.
+      Error details:
+
+      ${e?.message}
+
+      ${e?.soapResponse.match(/<H2>(.*?)<\/H2>/m)?.[0]}
+    `)
   }
-
-  return validationInfo.valid;
 };
