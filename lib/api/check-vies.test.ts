@@ -1,6 +1,6 @@
 import checkVIES from './check-vies';
 
-describe('check VIES', () => {
+describe.skip('check VIES', () => {
   test('returns promise', () => {
     const value = checkVIES('HU', 'HU25966330');
 
