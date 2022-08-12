@@ -11,4 +11,6 @@ export const ProformaContext = React.createContext({
   setLineItems: (d) => {},
   discount: 0,
   setDiscount: (d) => {},
+  comment: '',
+  setComment: (d) => {},
 });

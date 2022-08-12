@@ -21,8 +21,10 @@ export default async function create (
   const orderNumber = (Math.random() * 1000).toString(32).replace('.', '').toUpperCase();
   const invoiceIdPrefix = config.invoice['id-prefix'];
   const logoImage = config.invoice['logo-image'];
-  const comment = invoiceComment(partner, items, false, config);
+  const comment = invoiceComment(order.comment ?? '', partner, items);
+
   const szamlazzItems = items.map(item => new Item(item));
+
   const { dueDays = 8 } = order.partner
   const dueDate = new Date(+new Date() + 1000 * 60 * 60 * 24 * dueDays);
   return new Invoice({

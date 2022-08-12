@@ -38,6 +38,7 @@ function HomePage({ user }) {
     });
     const [tickets, setTickets] = useState([]);
     const [lineItems, setLineItems] = useState([]);
+    const [comment, setComment] = useState('');
     const [discount, setDiscount] = useState(0);
 
     const [working, setWorking] = useState(false);
@@ -55,6 +56,8 @@ function HomePage({ user }) {
       setLineItems,
       discount,
       setDiscount,
+      comment,
+      setComment,
     };
 
     const removeLineItem = (id) => {
@@ -74,6 +77,7 @@ function HomePage({ user }) {
             item.price = item.itemPrice - (item.itemPrice * item.discount / 100);
             return item;
           }),
+          comment,
         }),
       });
 
