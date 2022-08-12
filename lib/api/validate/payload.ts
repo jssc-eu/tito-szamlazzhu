@@ -9,10 +9,13 @@ export default function validatePayload (request, eventConfig) {
     .update(request.rawBody)
     .digest('base64');
 
+
   if (signature !== hmac) {
-    console.error(`Tito signature STILL CANNOT BE VERIFIED "${signature}"`);
-    console.error('hmac', hmac);
-    console.error('raw body', request.rawBody);
+    if (process.env.NODE_ENV !== 'test') {
+      console.error(`Tito signature STILL CANNOT BE VERIFIED "${signature}"`);
+      console.error('hmac', hmac);
+      console.error('raw body', request.rawBody);
+    }
     throw Boom.notAcceptable();
   }
 };

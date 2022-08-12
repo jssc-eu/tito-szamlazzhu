@@ -46,7 +46,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "NODE_ENV=test; jest"
   },
   "engines": {
     "node": "16.x"
