@@ -61,5 +61,6 @@
   "bugs": {
     "url": "https://github.com/jssc-eu/proforma/issues"
   },
-  "homepage": "https://github.com/jssc-eu/proforma#readme"
+  "homepage": "https://github.com/jssc-eu/proforma#readme",
+  "cacheDirectories": ["node_modules", ".next/cache"]
 }
