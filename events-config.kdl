@@ -3,8 +3,6 @@ events {
 
   /*
     JSConf Budapest 2022
-
-
   */
   jsconf-budapest-2022 {
 
@@ -12,8 +10,8 @@ events {
 
     tickets {
       "*" {
-        event-date "June 2-3, 2022"
-        net-catering-price 128
+        eventDate "June 2-3, 2022"
+        netCateringPrice 128
       }
     }
 
@@ -49,13 +47,11 @@ events {
       "
     }
 
-    tito-signature-validator-env "TITO_TOKEN_JS"
+    titoSignatureValidator "TITO_TOKEN_JS"
   }
 
   /*
     Integration Test Event 2022
-
-
   */
   integration-test-event-2022 {
 
@@ -63,16 +59,16 @@ events {
 
     tickets {
       "*" {
-        event-date "September 24-25, 2022"
-        net-catering-price 40
+        eventDate "September 24-25, 2022"
+        netCateringPrice 40
       }
       "workshop" {
-        event-date "September 23, 2022"
-        net-catering-price 20
+        eventDate "September 23, 2022"
+        netCateringPrice 20
       }
       "online" {
-        event-date "September 24-25, 2022"
-        net-catering-price 0
+        eventDate "September 24-25, 2022"
+        netCateringPrice 0
       }
     }
 
@@ -108,7 +104,7 @@ events {
       "
     }
 
-    tito-signature-validator-env "TITO_TOKEN_TESTMODE"
+    titoSignatureValidator "TITO_TOKEN_TESTMODE"
   }
 
 }

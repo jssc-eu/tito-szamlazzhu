@@ -3,30 +3,36 @@ import { KdlConfig } from './kdl';
 import { YamlConfig } from './yaml';
 
 export interface EventConfig {
+  tickets: TicketsConfig;
   invoice: InvoiceConfig;
   email: EmailConfig;
-  getLabel(): string;
-  getTitoSignatureValidator(): string;
+  getLabel(): Promise<string>;
+  getTitoSignatureValidator(): Promise<string>;
 }
 
 export interface InvoiceConfig {
-  getPrefix(): string;
-  getLogo(): string;
-  getCurrency(): string;
-  getComment(): string;
-  isEinvoice(): boolean;
+  getPrefix(): Promise<string>;
+  getLogo(): Promise<string>;
+  getCurrency(): Promise<string>;
+  getComment(): Promise<string>;
+  isEinvoice(): Promise<boolean>;
   bank: BankConfig;
 }
 
 export interface BankConfig {
-  getName(): string;
-  getAccountNumber(): string;
+  getName(): Promise<string>;
+  getAccountNumber(): Promise<string>;
 }
 
 export interface EmailConfig {
-  getReplyToAddress(): string;
-  getSubject(): string;
-  getMessage(): string;
+  getReplyToAddress(): Promise<string>;
+  getSubject(): Promise<string>;
+  getMessage(): Promise<string>;
+}
+
+export interface TicketsConfig {
+  getDate(ticketName: string): Promise<string>;
+  getNetCateringPrice(ticketName: string): Promise<number>;
 }
 
 /*
