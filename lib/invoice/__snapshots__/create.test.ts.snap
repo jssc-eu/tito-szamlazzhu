@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create invoice szamlazz invoice invoked with proper params 1`] = `
+Object {
+  "buyer": Buyer {
+    "_generateXML": [MockFunction],
+  },
+  "comment": "
+The invoice includes mediated services.
+Paid in full.
+This document was issued electronically and is therefore valid without signature.
+",
+  "currency": Currency {
+    "comment": "Euro",
+    "constructor": [MockFunction],
+    "roundPriceExp": 2,
+    "toString": [MockFunction],
+    "value": "EUR",
+  },
+  "invoiceIdPrefix": "WIPAO",
+  "items": Array [
+    Item {
+      "_generateXML": [MockFunction],
+    },
+    Item {
+      "_generateXML": [MockFunction],
+    },
+  ],
+  "language": Language {
+    "constructor": [MockFunction],
+    "name": "English",
+    "toString": [MockFunction],
+    "value": "en",
+  },
+  "logoImage": "JSCBP-szamlazzhu.png",
+  "orderNumber": "K0DF",
+  "paid": true,
+  "paymentMethod": PaymentMethod {
+    "comment": "PayPal",
+    "constructor": [MockFunction],
+    "toString": [MockFunction],
+    "value": "PayPal",
+  },
+  "seller": Seller {
+    "_generateXML": [MockFunction],
+  },
+}
+`;

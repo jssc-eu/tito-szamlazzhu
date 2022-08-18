@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import validateRequest from 'lib/api/validate/request';
 import validatePayload from 'lib/api/validate/payload';
 import readConfig from 'lib/api/read-config';
+import getEventConfig from 'lib/eventconfig'
 import { order as getOrder } from 'lib/tito';
 import attachTitoReleaseMetaData from 'lib/tito/attach-release-metadata';
 import invoice from 'lib/invoice/create';
@@ -79,15 +80,9 @@ export default async function callback(
       slug: orderId,
     } = registrationData;
 
-    const eventsConfig = await readConfig();
-    const eventConfig = eventsConfig.events[eventId];
+    const eventConfig = await getEventConfig(eventId);
 
-    if (typeof eventConfig == 'undefined') {
-      res.status(400).end();
-      return;
-    }
-
-    validatePayload(req, eventConfig);
+    await validatePayload(req, eventConfig);
 
     const rawOrder = await getTitoOrder(accountId, eventId, orderId);
     const orderData = await rawOrder.json()
@@ -101,7 +96,7 @@ export default async function callback(
 
     const result = await send(
       invoice,
-      createClient(eventConfig, process.env.SZAMLAZZ_TOKEN)
+      await createClient(eventConfig, process.env.SZAMLAZZ_TOKEN)
     );
     res.status(200).end(result);
   } catch (e) {

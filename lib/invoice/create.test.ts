@@ -3,6 +3,7 @@ import fs from 'fs';
 import yaml from 'yaml';
 import szamlazz from '@jssc/szamlazz.js';
 import create from './create';
+import getEventConfig from 'lib/eventconfig'
 
 jest.mock('@jssc/szamlazz.js');
 
@@ -126,12 +127,13 @@ const order = {
 
 describe('create invoice', () => {
   test('szamlazz invoice invoked with proper params', async () => {
-      const file = await readFile('./test-config.yaml', 'utf8');
-      const config = (yaml.parse(file)).events['integration-test-event-2022'];
+
+      process.env.EVENT_CONFIG_PATH = './test-config.yaml'
+      const eventConfig = getEventConfig('integration-test-event-2022')
 
       await create(
         order,
-        config,
+        eventConfig,
         szamlazz.Seller,
         szamlazz.Buyer,
         szamlazz.Item,
@@ -139,9 +141,6 @@ describe('create invoice', () => {
       );
 
       const invoice = szamlazz.Invoice.mock.calls[0][0];
-
-      expect(invoice.paymentMethod.value).toBe('PayPal');
-      expect(invoice.currency.value).toBe('EUR');
-      expect(invoice.language.value).toBe('en');
+      expect(invoice).toMatchSnapshot();
   });
 });

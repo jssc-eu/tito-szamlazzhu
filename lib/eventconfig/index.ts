@@ -35,26 +35,7 @@ export interface TicketsConfig {
   getNetCateringPrice(ticketName: string): Promise<number>;
 }
 
-/*
-
-config.invoice.getPrefix()
-config.invoice.getLogo()
-config.invoice.getCurrency()
-config.invoice.getComment()
-config.invoice.isEinvoice()
-config.invoice.bank.getName()
-config.invoice.bank.getAccountNumber()
-
-config.email.getReplyToAddress()
-config.email.getSubject()
-config.email.getMessage()
-
-config.getTitoSignatureValidator()
-
-*/
-
-// export  proper parser based on coinfig filename or default filename
-const createConfig = (event) => {
+const createConfig = (event):EventConfig => {
   const configPath = process.env.EVENT_CONFIG_PATH ?? './events-config.yaml';
 
   switch (path.extname(configPath)) {

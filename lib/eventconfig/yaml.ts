@@ -115,9 +115,13 @@ export class YamlConfig implements EventConfig {
   email: EmailConfig;
   tickets: TicketsConfig;
 
-  constructor (key: string, configPath: string) {
+  constructor (key: string, configPath: string, rawData?: any) {
     this.event = key;
     this.configPath = configPath;
+
+    if (rawData) {
+      this.rawData = rawData;
+    }
 
     this.email = new YamlEmailConfig(key, this.getRawData.bind(this))
     this.invoice = new YamlInvoiceConfig(key, this.getRawData.bind(this))
