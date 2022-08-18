@@ -106,7 +106,92 @@ Obtain these from the Application setup page on Auth0
 
 **Note:** if you use the free, sandbox Mailgun integration, set this email as an authorized recipient
 
-### events-config.yaml
+## Event configuration
+
+Everything related to events can be configured in event configuration files. Two types of files supported:
+
+- yaml
+- kdl
+
+KDL is considered to be more human-friendly when editing necessary, as whitespace have no effect on the data structure.
+
+You can provide a configuration file path using the EVENT_CONFIG_PATH env variable, example:
+
+```
+EVENT_CONFIG_PATH="./custom-events-config.yaml" 
+```
+
+Default configuration file read is `./events-config.yaml`
+
+### events-config.kdl example
+
+```kdl
+events {
+
+  # every event entry key is the "event slug" in tito, example: "jsconf-budapest-2022"
+  integration-test-event-2022 {
+    label "JSConf Budapest 2022"
+    
+    # handle several dates and catering prices for you event, for example workshops or online tickets
+    tickets {
+
+      "*" {
+        eventDate "September 24-25, 2020"
+        netCateringPrice 40
+      }
+      "workshop" {
+        eventDate "September 23, 2020"
+        netCateringPrice 20
+      }
+      "online" {
+        eventDate "September 24-25, 2020"
+        netCateringPrice 0
+      }
+
+    }
+
+    invoice {
+      prefix "WIPAO"
+      logo "JSCBP-szamlazzhu.png"
+      e-invoice false
+      currency "EUR"
+      comment "
+        The invoice includes mediated services.
+        Paid in full.
+        This document was issued electronically and is therefore valid without signature.
+      "
+
+      bank {
+        name "Raiffeisen Bank, SWIFT: UBRTHUHB"
+        accountNumber "HU18-1201-0659-0160-2199-0020-0008"
+      }
+    }
+
+    email {
+      replyToAddress "nec@jsconfbp.com"
+      subject "Your invoice for Integration Test Event 2020"
+      message "
+        Dear Attendee!
+
+        Thank you for taking part in Reinforce AI Conference 2020.
+
+        Please find attached our official invoice for the Reinforce AI conference.
+        In case you have an issue with the invoice please reply to this e-mail.
+        In case you have a general question regarding the conference please write to: hello@reinforceconf.com
+
+        The Reinforce conference team
+      "
+    }
+    
+    # name of the ENV variable that provides the Tito webhook signature validator key
+    titoSignatureValidator "TITO_TOKEN_TESTMODE"
+  }
+}
+
+```
+
+
+### events-config.yaml example
 
 ```yaml
 ---
