@@ -23,7 +23,7 @@ describe('vat entries', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -33,7 +33,7 @@ describe('vat entries', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -43,7 +43,7 @@ describe('vat entries', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -53,7 +53,7 @@ describe('vat entries', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -63,7 +63,7 @@ describe('vat entries', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -73,7 +73,7 @@ describe('vat entries', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -88,7 +88,7 @@ describe('vat entries for online services', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -98,7 +98,7 @@ describe('vat entries for online services', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -109,7 +109,7 @@ describe('vat entries for online services', () => {
 
     const invoice = await createInvoice(order, config);
 
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -119,7 +119,7 @@ describe('vat entries for online services', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -129,7 +129,7 @@ describe('vat entries for online services', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -139,7 +139,7 @@ describe('vat entries for online services', () => {
     const config = mockConfig("single", "single")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -155,7 +155,7 @@ describe('date and catering matchers', () => {
     const config = mockConfig("single", "single-match")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -165,7 +165,7 @@ describe('date and catering matchers', () => {
     const config = mockConfig("single", "single-match")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -176,7 +176,7 @@ describe('date and catering matchers', () => {
     const config = mockConfig("workshop", "workshop")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -186,7 +186,7 @@ describe('date and catering matchers', () => {
     const config = mockConfig("workshop", "workshop")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -196,7 +196,7 @@ describe('date and catering matchers', () => {
     const config = mockConfig("no-catering-workshop", "workshop")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -206,7 +206,7 @@ describe('date and catering matchers', () => {
     const config = mockConfig("no-catering-workshop", "workshop")
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })

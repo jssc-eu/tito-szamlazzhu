@@ -34,7 +34,7 @@ events:
 
     bank:
       name: "Wise, SWIFT/BIC: TRWIBEB1XXX"
-      accountNumber: "BE46-9671-1672-7136"
+      account-number: "BE46-9671-1672-7136"
     tito-signature-validator-env: TITO_TOKEN_JS
 
 

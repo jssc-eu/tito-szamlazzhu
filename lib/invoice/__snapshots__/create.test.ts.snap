@@ -1,48 +1,167 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`create invoice szamlazz invoice invoked with proper params 1`] = `
-Object {
-  "buyer": Buyer {
-    "_generateXML": [MockFunction],
-  },
-  "comment": "
+exports[`create invoice szamlazz invoice invoked with proper params - kdl config 1`] = `
+"<fejlec>
+  <keltDatum>2022-08-18</keltDatum>
+  <teljesitesDatum>2022-08-18</teljesitesDatum>
+  <fizetesiHataridoDatum>2022-08-18</fizetesiHataridoDatum>
+  <fizmod>PayPal</fizmod>
+  <penznem>EUR</penznem>
+  <szamlaNyelve>en</szamlaNyelve>
+  <megjegyzes>
+
+        The invoice includes mediated services.
+        Paid in full.
+        This document was issued electronically and is therefore valid without signature.
+      </megjegyzes>
+  <arfolyamBank></arfolyamBank>
+  <arfolyam>0</arfolyam>
+  <rendelesSzam>K0DF</rendelesSzam>
+  <elolegszamla>false</elolegszamla>
+  <logoExtra>JSCBP-szamlazzhu.png</logoExtra>
+  <szamlaszamElotag>WIPAO</szamlaszamElotag>
+  <fizetve>true</fizetve>
+</fejlec>
+<elado>
+  <bank>Raiffeisen Bank, SWIFT: UBRTHUHB</bank>
+  <bankszamlaszam>HU18-1201-0659-0160-2199-0020-0008</bankszamlaszam>
+  <emailReplyto>nec@jsconfbp.com</emailReplyto>
+  <emailTargy>Your invoice for Integration Test Event 2020</emailTargy>
+  <emailSzoveg>
+        Dear Attendee!
+
+        Thank you for taking part in Reinforce AI Conference 2020.
+
+        Please find attached our official invoice for the Reinforce AI conference.
+        In case you have an issue with the invoice please reply to this e-mail.
+        In case you have a general question regarding the conference please write to: hello@reinforceconf.com
+
+        The Reinforce conference team
+      </emailSzoveg>
+</elado>
+<vevo>
+  <nev>Teszt Company GMBH</nev>
+  <orszag>DE</orszag>
+  <irsz>1061</irsz>
+  <telepules>Budapest</telepules>
+  <cim>Andrássy út 39 USTREAM Magyarország Kft Budapest</cim>
+  <email>neccccc@gmail.com</email>
+  <sendEmail>true</sendEmail>
+  <adoalany>6</adoalany>
+  <adoszam>234536</adoszam>
+  <postazasiNev>Teszt Company GMBH</postazasiNev>
+  <postazasiIrsz>1061</postazasiIrsz>
+  <postazasiTelepules>Budapest</postazasiTelepules>
+  <postazasiCim>Andrássy út 39 USTREAM Magyarország Kft Budapest</postazasiCim>
+  <azonosito>234536</azonosito>
+  <alairoNeve>Szabolcs Szabolcsi-Toth</alairoNeve>
+  <telefonszam></telefonszam>
+</vevo>
+<tetelek>
+<tetel>
+  <megnevezes>Early Bird</megnevezes>
+  <mennyiseg>1</mennyiseg>
+  <mennyisegiEgyseg>qt</mennyisegiEgyseg>
+  <nettoEgysegar>64.72</nettoEgysegar>
+  <afakulcs>27</afakulcs>
+  <nettoErtek>64.72</nettoErtek>
+  <afaErtek>17.48</afaErtek>
+  <bruttoErtek>82.2</bruttoErtek>
+  <megjegyzes>Ticket for JSConf Budapest 2022, September 24-25, 2020.</megjegyzes>
+</tetel>
+<tetel>
+  <megnevezes>Mediated services</megnevezes>
+  <mennyiseg>1</mennyiseg>
+  <mennyisegiEgyseg>qt</mennyisegiEgyseg>
+  <nettoEgysegar>40</nettoEgysegar>
+  <afakulcs>27</afakulcs>
+  <nettoErtek>40</nettoErtek>
+  <afaErtek>10.8</afaErtek>
+  <bruttoErtek>50.8</bruttoErtek>
+  <megjegyzes>Conference catering fee</megjegyzes>
+</tetel>
+</tetelek>
+"
+`;
+
+exports[`create invoice szamlazz invoice invoked with proper params - yaml config 1`] = `
+"<fejlec>
+  <keltDatum>2022-08-18</keltDatum>
+  <teljesitesDatum>2022-08-18</teljesitesDatum>
+  <fizetesiHataridoDatum>2022-08-18</fizetesiHataridoDatum>
+  <fizmod>PayPal</fizmod>
+  <penznem>EUR</penznem>
+  <szamlaNyelve>en</szamlaNyelve>
+  <megjegyzes>
 The invoice includes mediated services.
 Paid in full.
 This document was issued electronically and is therefore valid without signature.
-",
-  "currency": Currency {
-    "comment": "Euro",
-    "constructor": [MockFunction],
-    "roundPriceExp": 2,
-    "toString": [MockFunction],
-    "value": "EUR",
-  },
-  "invoiceIdPrefix": "WIPAO",
-  "items": Array [
-    Item {
-      "_generateXML": [MockFunction],
-    },
-    Item {
-      "_generateXML": [MockFunction],
-    },
-  ],
-  "language": Language {
-    "constructor": [MockFunction],
-    "name": "English",
-    "toString": [MockFunction],
-    "value": "en",
-  },
-  "logoImage": "JSCBP-szamlazzhu.png",
-  "orderNumber": "K0DF",
-  "paid": true,
-  "paymentMethod": PaymentMethod {
-    "comment": "PayPal",
-    "constructor": [MockFunction],
-    "toString": [MockFunction],
-    "value": "PayPal",
-  },
-  "seller": Seller {
-    "_generateXML": [MockFunction],
-  },
-}
+</megjegyzes>
+  <arfolyamBank></arfolyamBank>
+  <arfolyam>0</arfolyam>
+  <rendelesSzam>K0DF</rendelesSzam>
+  <elolegszamla>false</elolegszamla>
+  <logoExtra>JSCBP-szamlazzhu.png</logoExtra>
+  <szamlaszamElotag>WIPAO</szamlaszamElotag>
+  <fizetve>true</fizetve>
+</fejlec>
+<elado>
+  <bank>Raiffeisen Bank, SWIFT: UBRTHUHB</bank>
+  <bankszamlaszam>HU18-1201-0659-0160-2199-0020-0008</bankszamlaszam>
+  <emailReplyto>nec@jsconfbp.com</emailReplyto>
+  <emailTargy>Your invoice for Integration Test Event 2020</emailTargy>
+  <emailSzoveg>Dear Attendee!
+
+Thank you for taking part in Reinforce AI Conference 2020.
+
+Please find attached our official invoice for the Reinforce AI conference.
+In case you have an issue with the invoice please reply to this e-mail.
+In case you have a general question regarding the conference please write to: hello@reinforceconf.com
+
+The Reinforce conference team
+</emailSzoveg>
+</elado>
+<vevo>
+  <nev>Teszt Company GMBH</nev>
+  <orszag>DE</orszag>
+  <irsz>1061</irsz>
+  <telepules>Budapest</telepules>
+  <cim>Andrássy út 39 USTREAM Magyarország Kft Budapest</cim>
+  <email>neccccc@gmail.com</email>
+  <sendEmail>true</sendEmail>
+  <adoalany>6</adoalany>
+  <adoszam>234536</adoszam>
+  <postazasiNev>Teszt Company GMBH</postazasiNev>
+  <postazasiIrsz>1061</postazasiIrsz>
+  <postazasiTelepules>Budapest</postazasiTelepules>
+  <postazasiCim>Andrássy út 39 USTREAM Magyarország Kft Budapest</postazasiCim>
+  <azonosito>234536</azonosito>
+  <alairoNeve>Szabolcs Szabolcsi-Toth</alairoNeve>
+  <telefonszam></telefonszam>
+</vevo>
+<tetelek>
+<tetel>
+  <megnevezes>Early Bird</megnevezes>
+  <mennyiseg>1</mennyiseg>
+  <mennyisegiEgyseg>qt</mennyisegiEgyseg>
+  <nettoEgysegar>64.72</nettoEgysegar>
+  <afakulcs>27</afakulcs>
+  <nettoErtek>64.72</nettoErtek>
+  <afaErtek>17.48</afaErtek>
+  <bruttoErtek>82.2</bruttoErtek>
+  <megjegyzes>Ticket for JSConf Budapest 2022, September 24-25, 2020.</megjegyzes>
+</tetel>
+<tetel>
+  <megnevezes>Mediated services</megnevezes>
+  <mennyiseg>1</mennyiseg>
+  <mennyisegiEgyseg>qt</mennyisegiEgyseg>
+  <nettoEgysegar>40</nettoEgysegar>
+  <afakulcs>27</afakulcs>
+  <nettoErtek>40</nettoErtek>
+  <afaErtek>10.8</afaErtek>
+  <bruttoErtek>50.8</bruttoErtek>
+  <megjegyzes>Conference catering fee</megjegyzes>
+</tetel>
+</tetelek>
+"
 `;

@@ -39,10 +39,10 @@ const createConfig = (event):EventConfig => {
   const configPath = process.env.EVENT_CONFIG_PATH ?? './events-config.yaml';
 
   switch (path.extname(configPath)) {
-    case 'kdl':
+    case '.kdl':
       return new KdlConfig(event, configPath);
-    case 'yaml':
-    case 'yml':
+    case '.yaml':
+    case '.yml':
     default:
       return new YamlConfig(event, configPath);
   }

@@ -17,7 +17,7 @@ export default async function create (
   Item: any = szamlazz.Item,
   Invoice: any = szamlazz.Invoice
 ) {
-  const seller = getSeller(eventConfig);
+  const seller = await getSeller(eventConfig);
   const rawPartner = getPartnerFromOrder(order);
   const partner = await getPartner(rawPartner);
   const rawItems = getItemsFromOrder(order);

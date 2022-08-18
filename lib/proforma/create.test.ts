@@ -3,6 +3,7 @@ import fs from 'fs';
 import yaml from 'yaml';
 import szamlazz from '@jssc/szamlazz.js';
 import create from './create';
+import getEventConfig from 'lib/eventconfig'
 
 jest.mock('@jssc/szamlazz.js');
 
@@ -56,13 +57,13 @@ const order = {
 
 
 describe('create proforma', () => {
-  test('szamlazz proforma invoked with proper params', async () => {
-      const file = await readFile('./test-config.yaml', 'utf8');
-      const config = (yaml.parse(file)).events['integration-test-event-2022'];
+  test('szamlazz proforma invoked with proper params - yaml', async () => {
+      process.env.EVENT_CONFIG_PATH = './test-config.yaml'
+      const eventConfig = await getEventConfig('integration-test-event-2022');
 
       await create(
         order,
-        config,
+        eventConfig,
         szamlazz.Seller,
         szamlazz.Buyer,
         szamlazz.Item,
@@ -76,5 +77,27 @@ describe('create proforma', () => {
       expect(invoice.language.value).toBe('en');
       expect(invoice.proforma).toBe(true);
       expect(invoice.paid).toBe(false);
+  });
+
+  test('szamlazz proforma invoked with proper params - kdl', async () => {
+    process.env.EVENT_CONFIG_PATH = './test-config.kdl'
+    const eventConfig = await getEventConfig('integration-test-event-2022');
+
+    await create(
+      order,
+      eventConfig,
+      szamlazz.Seller,
+      szamlazz.Buyer,
+      szamlazz.Item,
+      szamlazz.Invoice
+    );
+
+    const invoice = szamlazz.Invoice.mock.calls[0][0];
+
+    expect(invoice.paymentMethod.value).toBe('Átutalás');
+    expect(invoice.currency.value).toBe('EUR');
+    expect(invoice.language.value).toBe('en');
+    expect(invoice.proforma).toBe(true);
+    expect(invoice.paid).toBe(false);
   });
 });

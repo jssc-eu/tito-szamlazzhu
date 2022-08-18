@@ -37,7 +37,8 @@ describe('vat info line is undefined if vat contains whitespace', () => {
     }
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
+
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
@@ -60,7 +61,7 @@ describe('vat info line is undefined if vat contains whitespace', () => {
     }
 
     const invoice = await createInvoice(order, config);
-    const client = createClient(config, token)
+    const client = await createClient(config, token)
     const xml = client._generateInvoiceXML(invoice)
     expect(xml).toMatchSnapshot();
   })
