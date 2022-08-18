@@ -7,30 +7,31 @@ import getSeller from 'lib/seller';
 import getItems from 'lib/lineitem';
 import getPaymentMethod from './get-payment-method';
 import getTaxComment from 'lib/tax/comment';
+import { EventConfig } from 'lib/eventconfig';
 
 export default async function create (
   order: any,
-  config: any,
+  eventConfig: EventConfig,
   Seller: any = szamlazz.Seller,
   Buyer: any = szamlazz.Buyer,
   Item: any = szamlazz.Item,
   Invoice: any = szamlazz.Invoice
 ) {
-  const seller = getSeller(config);
+  const seller = await getSeller(eventConfig);
   const rawPartner = getPartnerFromOrder(order);
   const partner = await getPartner(rawPartner);
   const rawItems = getItemsFromOrder(order);
-  const items = getItems(rawItems, partner, config);
+  const items = await getItems(rawItems, partner, eventConfig);
 
   if (process.env.DEBUG) {
     console.warn(yaml.stringify(order));
   }
 
-  const currency = config.invoice.currency;
+  const currency = await eventConfig.invoice.getCurrency()
   const orderNumber = order.reference;
-  const invoiceIdPrefix = config.invoice['id-prefix'];
-  const logoImage = config.invoice['logo-image'];
-  const comment = getTaxComment(partner, items) + '\n' + config.invoice.comment;
+  const invoiceIdPrefix = await eventConfig.invoice.getPrefix()
+  const logoImage = await eventConfig.invoice.getLogo();
+  const comment = getTaxComment(partner, items) + '\n' + await eventConfig.invoice.getComment()
 
   const szamlazzItems = items.map(item => new Item(item));
   return new Invoice({

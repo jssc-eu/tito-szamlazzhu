@@ -3,24 +3,25 @@ import getPartner from 'lib/partner';
 import getSeller from 'lib/seller';
 import getItems from 'lib/lineitem';
 import invoiceComment from 'lib/invoice/comment';
+import { EventConfig } from 'lib/eventconfig';
 
 export default async function create (
   order: any,
-  config: any,
+  config: EventConfig,
   Seller: any = szamlazz.Seller,
   Buyer: any = szamlazz.Buyer,
   Item: any = szamlazz.Item,
   Invoice: any = szamlazz.Invoice
 ) {
-  const seller = getSeller(config);
+  const seller = await getSeller(config);
 
   const partner = await getPartner(order.partner);
-  const items = getItems(order.lineItems, partner, config);
+  const items = await getItems(order.lineItems, partner, config);
 
-  const currency = config.invoice.currency;
+  const currency = await config.invoice.getCurrency()
   const orderNumber = (Math.random() * 1000).toString(32).replace('.', '').toUpperCase();
-  const invoiceIdPrefix = config.invoice['id-prefix'];
-  const logoImage = config.invoice['logo-image'];
+  const invoiceIdPrefix = await config.invoice.getPrefix()
+  const logoImage = await config.invoice.getLogo()
   const comment = invoiceComment(order.comment ?? '', partner, items);
 
   const szamlazzItems = items.map(item => new Item(item));

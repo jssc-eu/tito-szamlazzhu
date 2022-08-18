@@ -32,6 +32,9 @@ This document was issued electronically and is therefore valid without signature
   <elado>
     <bank>Raiffeisen Bank, SWIFT: UBRTHUHB</bank>
     <bankszamlaszam>HU73-1201-0659-0160-2199-0040-0002</bankszamlaszam>
+    <emailReplyto>nec@jsconfbp.com</emailReplyto>
+    <emailTargy>Your invoice for Integration Test Event 2020</emailTargy>
+    <emailSzoveg>Email message</emailSzoveg>
   </elado>
   <vevo>
     <nev>TechTalk GmbH</nev>
@@ -110,6 +113,9 @@ This document was issued electronically and is therefore valid without signature
   <elado>
     <bank>Raiffeisen Bank, SWIFT: UBRTHUHB</bank>
     <bankszamlaszam>HU73-1201-0659-0160-2199-0040-0002</bankszamlaszam>
+    <emailReplyto>nec@jsconfbp.com</emailReplyto>
+    <emailTargy>Your invoice for Integration Test Event 2020</emailTargy>
+    <emailSzoveg>Email message</emailSzoveg>
   </elado>
   <vevo>
     <nev>Teads France SAS</nev>

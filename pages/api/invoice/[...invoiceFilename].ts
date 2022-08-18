@@ -1,7 +1,7 @@
 import authApi from 'lib/api/auth';
 import  { Readable }  from 'stream'
 import { promisify } from 'util'
-import readConfig from 'lib/api/read-config';
+import getEventConfig from 'lib/eventconfig'
 import createClient from 'lib/szamlazzhu/create-client';
 
 export default async function callback(req, res) {
@@ -13,11 +13,10 @@ export default async function callback(req, res) {
       eventId
     } = req.query
 
-    const eventsConfig = await readConfig();
-    const eventConfig = eventsConfig.events[eventId];
+    const eventConfig = getEventConfig(eventId);
 
     const invoiceId = invoiceFilename[0].replace('.pdf','')
-    const client = createClient(eventConfig, process.env.SZAMLAZZ_TOKEN)
+    const client = await createClient(eventConfig, process.env.SZAMLAZZ_TOKEN)
     const getInvoiceData = promisify(client.getInvoiceData).bind(client)
     const invoice = await getInvoiceData({
       invoiceId,

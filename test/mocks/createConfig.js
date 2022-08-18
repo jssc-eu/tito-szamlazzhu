@@ -1,4 +1,6 @@
 const configTemplate = require('./config-tpl')
+const { YamlConfig } = require('../../lib/eventconfig/yaml')
+
 const deepClone = data => JSON.parse(JSON.stringify(data));
 
 const cateringTypes = {
@@ -35,7 +37,12 @@ const cateringTypes = {
 }
 
 const dateTypes = {
-  ["single"]: "September 23, 2020",
+  ["single"]: [
+    {
+      'ticket-name-contains': '*',
+      date: 'September 23, 2020',
+    },
+  ],
   ["single-match"]: [
     {
       'ticket-name-contains': '*',
@@ -64,8 +71,8 @@ module.exports = (cateringType, dateType) => {
   if (dateTypes[dateType] instanceof Array) {
     config.dates = deepClone(dateTypes[dateType])
   } else {
-    config.date = deepClone(dateTypes[dateType])
+    config.dates = [deepClone(dateTypes[dateType])]
   }
 
-  return config
+  return new YamlConfig('ads', 'asd', config)
 }

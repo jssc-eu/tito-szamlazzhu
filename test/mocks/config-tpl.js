@@ -1,10 +1,7 @@
-const { mainModule } = require("process");
-
 const dedent = require('dedent')
 
 module.exports = {
   label: 'JSConf Budapest 2021',
-  date: 'September 23, 2020',
   catering: [
     {
       'ticket-name-contains': '*',
@@ -23,6 +20,11 @@ module.exports = {
   },
   bank: {
     name: 'Raiffeisen Bank, SWIFT: UBRTHUHB',
-    accountNumber: 'HU73-1201-0659-0160-2199-0040-0002'
+    "account-number": 'HU73-1201-0659-0160-2199-0040-0002'
+  },
+  email: {
+    "reply-to-address": "nec@jsconfbp.com",
+    subject: "Your invoice for Integration Test Event 2020",
+    message: "Email message",
   }
 };

@@ -1,13 +1,6 @@
 import { roundTo } from 'round-to';
 import { Partner, RawItem, Item, VatRate } from 'lib/types';
-import getCateringPerTicket from 'lib/lineitem/get-catering-per-ticket';
-import getPropertyByTicketType from 'lib/lineitem/get-property-by-ticket-type';
-
-const getDate = (ticket, config) => {
-  if (typeof config.dates === 'undefined') return config.date;
-
-  return getPropertyByTicketType(ticket, 'date', config.dates);
-};
+import { EventConfig } from 'lib/eventconfig';
 
 const getVatRateField = (buyer, isOnlineService) => {
   if (isOnlineService && buyer.isTEHK) {
@@ -18,7 +11,10 @@ const getVatRateField = (buyer, isOnlineService) => {
 };
 
 
-const getLineItems = (rawItems: RawItem[], buyer: Partner, eventConfig) => rawItems.reduce((items, ticket) => {
+const getLineItems = async (rawItems: RawItem[], buyer: Partner, eventConfig: EventConfig) => {
+  const result = []
+
+  for (let ticket of rawItems) {
     const {
       price,
       quantity,
@@ -28,12 +24,12 @@ const getLineItems = (rawItems: RawItem[], buyer: Partner, eventConfig) => rawIt
     } = ticket;
 
     if (price === 0) {
-      return items;
+      continue;
     }
 
     const vatRate = getVatRateField(buyer, isOnlineService);
-    const date = getDate(title, eventConfig);
-    const cateringPartial = getCateringPerTicket(title, eventConfig);
+    const date = await eventConfig.tickets.getDate(title);
+    const cateringPartial = await eventConfig.tickets.getNetCateringPrice(title);
     const ticketPartial = roundTo(price - (cateringPartial * 1.27), 2);
 
     const discountComment = (discount != 0) ? ` ${discount}% discount included.` : ``;
@@ -43,7 +39,7 @@ const getLineItems = (rawItems: RawItem[], buyer: Partner, eventConfig) => rawIt
       quantity,
       unit: 'qt',
       vat: vatRate,
-      comment: `Ticket for ${eventConfig.label}, ${date}.${discountComment}`,
+      comment: `Ticket for ${await eventConfig.getLabel()}, ${date}.${discountComment}`,
     };
 
     if (vatRate === VatRate.TEHK) {
@@ -53,7 +49,7 @@ const getLineItems = (rawItems: RawItem[], buyer: Partner, eventConfig) => rawIt
       item.grossUnitPrice = ticketPartial; // calculates gross and net values from per item net
     }
 
-		items.push(item);
+		result.push(item);
 
     if (cateringPartial !== 0) {
       const cateringItem: Item = {
@@ -71,11 +67,13 @@ const getLineItems = (rawItems: RawItem[], buyer: Partner, eventConfig) => rawIt
         cateringItem.grossUnitPrice = roundTo(cateringPartial * 1.27, 2); // calculates gross and net values from per item net
       }
 
-      items.push(cateringItem);
+      result.push(cateringItem);
     }
+  }
 
-    return items;
-  }, []);
+  return result;
+}
+
 
 
 export default getLineItems;

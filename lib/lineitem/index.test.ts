@@ -1,3 +1,4 @@
+import { YamlConfig } from 'lib/eventconfig/yaml';
 import { Partner } from 'lib/types';
 import getItemizedCosts from '.';
 
@@ -38,7 +39,12 @@ const tickets = [
 const testEvents = {
   fixDateSingleCatering: {
     label: 'JSConf Budapest 2021',
-    date: 'September 23, 2020',
+    dates: [
+      {
+        'ticket-name-contains': '*',
+        date: 'September 23, 2020',
+      }
+    ],
     catering: [
       {
         'ticket-name-contains': '*',
@@ -193,62 +199,63 @@ const buyerData: Partner = {
 const deepClone = data => JSON.parse(JSON.stringify(data));
 
 describe('catering', () => {
-  test('create 2 items or every ticket type', () => {
+  test('create 2 items or every ticket type', async () => {
     const lineItems = [tickets[0]];
+    const config = new YamlConfig('event', 'path', testEvents.fixDateSingleCatering)
 
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.fixDateSingleCatering);
+    const items = await getItemizedCosts(lineItems, buyerData, config);
     expect(items).toHaveLength(2);
   });
 
-  test('item names and comments are correct', () => {
+  test('item names and comments are correct', async () => {
     const lineItems = [tickets[0]];
-
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.fixDateSingleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.fixDateSingleCatering)
+    const items = await getItemizedCosts(lineItems, buyerData, config);
     expect(items[0].label).toBe('Early Bird');
     expect(items[0].comment).toBe('Ticket for JSConf Budapest 2021, September 23, 2020.');
     expect(items[1].label).toBe('Mediated services');
     expect(items[1].comment).toBe('Conference catering fee');
   });
 
-  test('rounds prices to 2 digits', () => {
+  test('rounds prices to 2 digits', async () => {
     const lineItems = [tickets[0]];
-
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.fixDateSingleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.fixDateSingleCatering)
+    const items = await getItemizedCosts(lineItems, buyerData, config);
 
     expect(items[0].grossUnitPrice.toString().split('.')[1].length).toBeLessThanOrEqual(2);
     expect(items[1].grossUnitPrice.toString().split('.')[1].length).toBeLessThanOrEqual(2);
   });
 
-  test('rounding without errors', () => {
+  test('rounding without errors', async () => {
     const lineItems = [tickets[0]];
-
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.fixDateSingleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.fixDateSingleCatering)
+    const items = await getItemizedCosts(lineItems, buyerData, config);
 
     expect((items[0].grossUnitPrice + items[1].grossUnitPrice)).toBe(205);
   });
 
-  test('skip catering item if its free', () => {
+  test('skip catering item if its free', async () => {
     const lineItems = [tickets[0], tickets[4]];
-
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.fixDateFreeCatering);
+    const config = new YamlConfig('event', 'path', testEvents.fixDateFreeCatering)
+    const items = await getItemizedCosts(lineItems, buyerData, config);
 
     expect(items).toHaveLength(3);
     expect(items[2].grossUnitPrice).toBe(150);
   });
 
-  test('skip items if they are free', () => {
+  test('skip items if they are free', async () => {
     const lineItems = [tickets[1], tickets[4]];
-
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.fixDateFreeCatering);
+    const config = new YamlConfig('event', 'path', testEvents.fixDateFreeCatering)
+    const items = await getItemizedCosts(lineItems, buyerData, config);
 
     expect(items).toHaveLength(1);
     expect(items[0].grossUnitPrice).toBe(150);
   });
 
-  test('multiple orders with different catering', () => {
+  test('multiple orders with different catering', async () => {
     const lineItems = [tickets[0], tickets[3]];
-
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.fixDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.fixDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyerData, config);
 
     expect((items[0].grossUnitPrice + items[1].grossUnitPrice)).toBe(205);
     expect((items[2].grossUnitPrice + items[3].grossUnitPrice)).toBe(450);
@@ -256,10 +263,10 @@ describe('catering', () => {
 });
 
 describe('event date', () => {
-  test('determines date according to ticket name', () => {
+  test('determines date according to ticket name', async () => {
     const lineItems = [tickets[2]];
-
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.fixDateSingleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.fixDateSingleCatering)
+    const items = await getItemizedCosts(lineItems, buyerData, config);
 
     expect(items).toHaveLength(2);
     expect(items[0].label).toBe('Early Workshop ticket');
@@ -268,10 +275,10 @@ describe('event date', () => {
     expect(items[1].comment).toBe('Conference catering fee');
   });
 
-  test('multiple orders with different date', () => {
+  test('multiple orders with different date', async () => {
     const lineItems = [tickets[0], tickets[2]];
-
-    const items = getItemizedCosts(lineItems, buyerData, testEvents.multipleDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.multipleDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyerData, config);
 
     expect(items).toHaveLength(4);
     expect(items[0].comment).toBe('Ticket for JSConf Budapest 2021, April 6-7, 2020.');
@@ -280,53 +287,53 @@ describe('event date', () => {
 });
 
 describe('VAT TEHK type', () => {
-  test('HU without VAT', () => {
+  test('HU without VAT', async () => {
     const lineItems = [tickets[0]];
 
     const buyer = deepClone(buyerData);
 
     buyer.isTEHK = false;
-
-    const items = getItemizedCosts(lineItems, buyer, testEvents.fixDateSingleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.fixDateSingleCatering)
+    const items = await getItemizedCosts(lineItems, buyer, config);
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
   });
 
-  test('HU with VAT', () => {
+  test('HU with VAT', async () => {
     const lineItems = [tickets[0], tickets[2]];
 
     const buyer = deepClone(buyerData);
 
     buyer.isTEHK = false;
-
-    const items = getItemizedCosts(lineItems, buyer, testEvents.multipleDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.multipleDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyer, config);
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
   });
 
-  test('EU without VAT', () => {
+  test('EU without VAT', async () => {
     const lineItems = [tickets[0], tickets[2]];
 
     const buyer = deepClone(buyerData);
 
     buyer.isTEHK = false;
-
-    const items = getItemizedCosts(lineItems, buyer, testEvents.multipleDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.multipleDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyer, config);
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
   });
 
-  test('EU with VAT', () => {
+  test('EU with VAT', async () => {
     const lineItems = [tickets[0], tickets[2]];
 
     const buyer = deepClone(buyerData);
 
     buyer.isTEHK = true;
-
-    const items = getItemizedCosts(lineItems, buyer, testEvents.multipleDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.multipleDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyer, config);
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
@@ -334,14 +341,15 @@ describe('VAT TEHK type', () => {
     expect(items[3].vat).toBe(27);
   });
 
-  test('EU Online Service with VAT', () => {
+  test('EU Online Service with VAT', async () => {
     const lineItems = [tickets[0], tickets[2], tickets[4]];
 
     const buyer = deepClone(buyerData);
 
     buyer.isTEHK = true;
 
-    const items = getItemizedCosts(lineItems, buyer, testEvents.multipleDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.multipleDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyer, config);
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
@@ -350,40 +358,40 @@ describe('VAT TEHK type', () => {
     expect(items[4].vat).toBe('TEHK');
   });
 
-  test('outside EU without VAT', () => {
+  test('outside EU without VAT', async () => {
     const lineItems = [tickets[0], tickets[2]];
 
     const buyer = deepClone(buyerData);
 
     buyer.isTEHK = false;
-
-    const items = getItemizedCosts(lineItems, buyer, testEvents.multipleDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.multipleDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyer, config);
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
   });
 
-  test('outside EU with VAT', () => {
+  test('outside EU with VAT', async () => {
     const lineItems = [tickets[0], tickets[2]];
 
     const buyer = deepClone(buyerData);
 
     buyer.isTEHK = false;
-
-    const items = getItemizedCosts(lineItems, buyer, testEvents.multipleDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.multipleDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyer, config);
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
   });
 
-  test('outside EU Online Service with VAT', () => {
+  test('outside EU Online Service with VAT', async () => {
     const lineItems = [tickets[0], tickets[4]];
 
     const buyer = deepClone(buyerData);
 
     buyer.isTEHK = false;
-
-    const items = getItemizedCosts(lineItems, buyer, testEvents.multipleDateMultipleCatering);
+    const config = new YamlConfig('event', 'path', testEvents.multipleDateMultipleCatering)
+    const items = await getItemizedCosts(lineItems, buyer, config);
 
     expect(items[0].vat).toBe(27);
     expect(items[1].vat).toBe(27);
