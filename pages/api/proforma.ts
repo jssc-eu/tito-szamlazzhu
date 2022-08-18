@@ -1,9 +1,8 @@
 import authApi from 'lib/api/auth';
-import readConfig from 'lib/api/read-config';
+import getEventConfig from 'lib/eventconfig';
 import createProforma from 'lib/proforma/create';
 import createClient from 'lib/szamlazzhu/create-client';
 import sendInvoice from 'lib/szamlazzhu/send-invoice';
-
 
 export default async function callback(req, res) {
   try {
@@ -12,8 +11,7 @@ export default async function callback(req, res) {
     const data = JSON.parse(req.body);
     const eventId = data.event.slug;
 
-    const eventsConfig = await readConfig();
-    const eventConfig = eventsConfig.events[eventId];
+    const eventConfig = await getEventConfig(eventId);
 
     if (typeof eventConfig == 'undefined') {
       res.status(400).end();
