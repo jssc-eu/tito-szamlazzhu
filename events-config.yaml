@@ -1,96 +1,14 @@
 ---
 events:
 
-  reinforce2021:
-    label: "Reinforce AI Conference 2021"
-    dates:
-      - ticket-name-contains: "ML/DL"
-        date: "December 2 & 9, 2020"
-      - ticket-name-contains: "MLflow"
-        date: "November 23 & 24, 2020"
-      - ticket-name-contains: "*"
-        date: "March 3–5, 2021"
-    catering:
-      - ticket-name-contains: "*"
-        net-price: 0
-    invoice:
-      id-prefix: "RF"
-      logo-image: "RF-szamlazzhu.png"
-      comment: |
-        The invoice includes mediated services.
-        Paid in full.
-        This document was issued electronically and is therefore valid without signature.
-      e-invoice: true
-      currency: EUR
-    email:
-      replyToAddress: "hello@reinforceconf.com"
-      subject: "Your invoice for Reinforce AI Conference 2021"
-      message: |
-        Dear Attendee!
-
-        Thank you for taking part in Reinforce AI Conference 2021.
-
-        Please find attached our official invoice for the Reinforce AI conference.
-        In case you have an issue with the invoice please reply to this e-mail.
-        In case you have a general question regarding the conference please write to: hello@reinforceconf.com
-
-        The Reinforce conference team
-
-    bank:
-      name: 'Raiffeisen Bank, SWIFT: UBRTHUHB'
-      accountNumber: 'HU73-1201-0659-0160-2199-0040-0002'
-    tito-signature-validator-env: TITO_TOKEN_RF_2021
-
-
-  reinforce2021online:
-    label: "Reinforce AI Conference 2021"
-    dates:
-      - ticket-name-contains: "ML/DL"
-        date: "December 2 & 9, 2020"
-      - ticket-name-contains: "MLflow"
-        date: "November 23 & 24, 2020"
-      - ticket-name-contains: "*"
-        date: "March 3–5, 2021"
-    catering:
-      - ticket-name-contains: "*"
-        net-price: 0
-    invoice:
-      id-prefix: "RF"
-      logo-image: "RF-szamlazzhu.png"
-      comment: |
-        The invoice includes mediated services.
-        Paid in full.
-        This document was issued electronically and is therefore valid without signature.
-      e-invoice: true
-      currency: EUR
-    email:
-      replyToAddress: "hello@reinforceconf.com"
-      subject: "Your invoice for Reinforce AI Conference 2021"
-      message: |
-        Dear Attendee!
-
-        Thank you for taking part in Reinforce AI Conference 2021.
-
-        Please find attached our official invoice for the Reinforce AI conference.
-        In case you have an issue with the invoice please reply to this e-mail.
-        In case you have a general question regarding the conference please write to: hello@reinforceconf.com
-
-        The Reinforce conference team
-
-    bank:
-      name: 'Raiffeisen Bank, SWIFT: UBRTHUHB'
-      accountNumber: 'HU73-1201-0659-0160-2199-0040-0002'
-    tito-signature-validator-env: TITO_TOKEN_RF
-
-
-  jsconf-budapest-2022:
-    label: "JSConf Budapest 2022"
+  jsconf-budapest-2024:
+    label: "JSConf Budapest 2024"
     dates:
       - ticket-name-contains: "*"
-        date: "June 2-3, 2022"
+        date: "June 27-28, 2024"
     catering:
       - ticket-name-contains: "*"
-        net-price: 128
+        net-price: 140
     invoice:
       id-prefix: "JSCBP"
       logo-image: "JSCBP-szamlazzhu.png"
@@ -102,18 +20,17 @@ events:
       currency: EUR
     email:
       replyToAddress: "team@jsconfbp.com"
-      subject: "Your invoice for JSConf Budapest 2022"
+      subject: "Your invoice for JSConf Budapest 2024"
       message: |
         Dear Attendee!
 
-        Thank you for purchasing tickets for JSConf Budapest 2022.
+        Thank you for purchasing tickets for JSConf Budapest 2024.
 
-        Please find attached our official invoice for the conference.
+        Please find our official invoice for the conference attached.
         In case you have an issue with the invoice, or you have a general question
         regarding the conference please write to: team@jsconfbp.com
 
         The JSConf Budapest team
-
     bank:
       name: "Wise, SWIFT/BIC: TRWIBEB1XXX"
       accountNumber: "BE46-9671-1672-7136"
