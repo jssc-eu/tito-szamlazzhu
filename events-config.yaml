@@ -8,7 +8,7 @@ events:
         date: "June 27-28, 2024"
     catering:
       - ticket-name-contains: "*"
-        net-price: 128
+        net-price: 140
     invoice:
       id-prefix: "JSCBP"
       logo-image: "JSCBP-szamlazzhu.png"
