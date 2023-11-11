@@ -38,11 +38,11 @@ events:
 
 
 
-  integration-test-event-2022:
-    label: "JSConf Budapest 2022"
+  integration-test-event-2024:
+    label: "Integration Testing Budapest 2024"
     dates:
       - ticket-name-contains: "*"
-        date: "September 24-25, 2022"
+        date: "September 24-25, 2024"
       - ticket-name-contains: "workshop"
         date: "September 23, 2022"
     catering:
@@ -63,14 +63,14 @@ events:
       currency: EUR
     email:
       reply-to-address: "nec@jsconfbp.com"
-      subject: "Your invoice for Integration Test Event 2022"
+      subject: "Your invoice for Integration Test Event 2024"
       message: |
         Dear Attendee!
-        Thank you for taking part in Reinforce AI Conference 2022.
-        Please find attached our official invoice for the Reinforce AI conference.
+        Thank you for taking part in Integration Testing 2024.
+        Please find attached our official invoice for the Integration Testing conference.
         In case you have an issue with the invoice please reply to this e-mail.
-        In case you have a general question regarding the conference please write to: hello@reinforceconf.com
-        The Reinforce conference team
+      
+        The Integration Testing team
     bank:
       name: "Raiffeisen Bank, SWIFT: UBRTHUHB"
       account-number: "HU18-1201-0659-0160-2199-0020-0008"
