@@ -7,6 +7,8 @@ events:
       - ticket-name-contains: "*"
         date: "June 27-28, 2024"
     catering:
+      - ticket-name-contains: "package"
+        net-price: 0
       - ticket-name-contains: "*"
         net-price: 140
     invoice:
