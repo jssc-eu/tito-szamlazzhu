@@ -2,9 +2,9 @@
 
 exports[`create invoice szamlazz invoice invoked with proper params - kdl config 1`] = `
 "<fejlec>
-  <keltDatum>2022-08-18</keltDatum>
-  <teljesitesDatum>2022-08-18</teljesitesDatum>
-  <fizetesiHataridoDatum>2022-08-18</fizetesiHataridoDatum>
+  <keltDatum>2024-03-06</keltDatum>
+  <teljesitesDatum>2024-03-06</teljesitesDatum>
+  <fizetesiHataridoDatum>2024-03-06</fizetesiHataridoDatum>
   <fizmod>PayPal</fizmod>
   <penznem>EUR</penznem>
   <szamlaNyelve>en</szamlaNyelve>
@@ -86,9 +86,9 @@ exports[`create invoice szamlazz invoice invoked with proper params - kdl config
 
 exports[`create invoice szamlazz invoice invoked with proper params - yaml config 1`] = `
 "<fejlec>
-  <keltDatum>2022-08-18</keltDatum>
-  <teljesitesDatum>2022-08-18</teljesitesDatum>
-  <fizetesiHataridoDatum>2022-08-18</fizetesiHataridoDatum>
+  <keltDatum>2024-03-06</keltDatum>
+  <teljesitesDatum>2024-03-06</teljesitesDatum>
+  <fizetesiHataridoDatum>2024-03-06</fizetesiHataridoDatum>
   <fizmod>PayPal</fizmod>
   <penznem>EUR</penznem>
   <szamlaNyelve>en</szamlaNyelve>

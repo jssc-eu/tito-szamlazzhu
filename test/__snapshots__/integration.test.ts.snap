@@ -552,6 +552,77 @@ This document was issued electronically and is therefore valid without signature
 </xmlszamla>"
 `;
 
+exports[`scholarship package example purchase 1`] = `
+"<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
+<xmlszamla xmlns=\\"http://www.szamlazz.hu/xmlszamla\\" xmlns:xsi=\\"http://www.w3.org/2001/XMLSchema-instance\\" xsi:schemaLocation=\\"http://www.szamlazz.hu/xmlszamla xmlszamla.xsd\\">
+  <beallitasok>
+    <szamlaagentkulcs>ABCDEFGHIJK</szamlaagentkulcs>
+    <eszamla>true</eszamla>
+    <szamlaLetoltes>false</szamlaLetoltes>
+    <szamlaLetoltesPld>1</szamlaLetoltesPld>
+    <valaszVerzio>1</valaszVerzio>
+  </beallitasok>
+  <fejlec>
+    <keltDatum>2020-11-22</keltDatum>
+    <teljesitesDatum>2020-11-22</teljesitesDatum>
+    <fizetesiHataridoDatum>2020-11-22</fizetesiHataridoDatum>
+    <fizmod>PayPal</fizmod>
+    <penznem>EUR</penznem>
+    <szamlaNyelve>en</szamlaNyelve>
+    <megjegyzes>Falling outside the territorial scope of the VAT Act.
+
+            The invoice includes mediated services.
+            Paid in full.
+            This document was issued electronically and is therefore valid without signature.</megjegyzes>
+    <arfolyamBank></arfolyamBank>
+    <arfolyam>0</arfolyam>
+    <rendelesSzam>UD7K</rendelesSzam>
+    <elolegszamla>false</elolegszamla>
+    <logoExtra>JS-szamlazzhu.png</logoExtra>
+    <szamlaszamElotag>JSSC</szamlaszamElotag>
+    <fizetve>true</fizetve>
+  </fejlec>
+  <elado>
+    <bank>Raiffeisen Bank, SWIFT: UBRTHUHB</bank>
+    <bankszamlaszam>HU73-1201-0659-0160-2199-0040-0002</bankszamlaszam>
+    <emailReplyto>nec@jsconfbp.com</emailReplyto>
+    <emailTargy>Your invoice for Integration Test Event 2020</emailTargy>
+    <emailSzoveg>Email message</emailSzoveg>
+  </elado>
+  <vevo>
+    <nev>Szabolcs Szabolcsi-Toth</nev>
+    <orszag>NO</orszag>
+    <irsz>1111</irsz>
+    <telepules>Cityname</telepules>
+    <cim>Address 1A Region</cim>
+    <email>email@name.com</email>
+    <sendEmail>true</sendEmail>
+    <adoalany>0</adoalany>
+    <adoszam></adoszam>
+    <postazasiNev>Szabolcs Szabolcsi-Toth</postazasiNev>
+    <postazasiIrsz>1111</postazasiIrsz>
+    <postazasiTelepules>Cityname</postazasiTelepules>
+    <postazasiCim>Address 1A Region</postazasiCim>
+    <azonosito>EMAIL_NAME_COM</azonosito>
+    <alairoNeve>Szabolcs Szabolcsi-Toth</alairoNeve>
+    <telefonszam></telefonszam>
+  </vevo>
+  <tetelek>
+  <tetel>
+    <megnevezes>Scholarship Support package</megnevezes>
+    <mennyiseg>1</mennyiseg>
+    <mennyisegiEgyseg>qt</mennyisegiEgyseg>
+    <nettoEgysegar>3.94</nettoEgysegar>
+    <afakulcs>27</afakulcs>
+    <nettoErtek>3.94</nettoErtek>
+    <afaErtek>1.06</afaErtek>
+    <bruttoErtek>5</bruttoErtek>
+    <megjegyzes>Ticket for JSConf Budapest 2021, April 8, 2020.</megjegyzes>
+  </tetel>
+  </tetelek>
+</xmlszamla>"
+`;
+
 exports[`vat entries EU company 1`] = `
 "<?xml version=\\"1.0\\" encoding=\\"UTF-8\\"?>
 <xmlszamla xmlns=\\"http://www.szamlazz.hu/xmlszamla\\" xmlns:xsi=\\"http://www.w3.org/2001/XMLSchema-instance\\" xsi:schemaLocation=\\"http://www.szamlazz.hu/xmlszamla xmlszamla.xsd\\">
