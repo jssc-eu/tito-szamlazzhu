@@ -7,9 +7,9 @@ const getIdentifier = (raw: Partial<RawPartner>): string => {
     taxNumber,
   } = raw;
 
-  if (typeof taxNumber !== 'undefined' && taxNumber !== '0' && taxNumber !== '') {
+  if (typeof taxNumber !== 'undefined' && taxNumber && taxNumber !== '0' && taxNumber !== '') {
     return taxNumber.replace(/[-_\s]/g, '').toUpperCase();
-  } else if (typeof companyName !== 'undefined' && companyName !== '') {
+  } else if (typeof companyName !== 'undefined' && companyName && companyName !== '') {
     return companyName.replace(/[\s.]/g, '_').replace(/_+/g, '_').toUpperCase();
   }
 

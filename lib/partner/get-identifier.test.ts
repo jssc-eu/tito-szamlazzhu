@@ -16,6 +16,14 @@ describe('get buyer identifier', () => {
       expect(identifier).toBe('123456789');
   });
 
+  test('buyer without vat number', async () => {
+    const order = deepClone(partner);
+    delete order.taxNumber
+
+    const identifier = await getBuyerIdentifier(order);
+    expect(identifier).toBe('TESZT-CO_GMBH');
+  });
+
   test('buyer with formatted vat number', async () => {
     const order = deepClone(partner);
     order.taxNumber = '123456-7-89';
